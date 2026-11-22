@@ -51,14 +51,14 @@ The printed letter itself is about 13 mm font size: a capital is roughly 9 mm ta
 
 ### 1. Face and frame
 
-- Use `hardware/60cm/faceplate_clear_600.svg` and `hardware/60cm/faceplate_EN_stencil_600.svg`. Ignore the other languages.
-- Use the new frame SVGs in `hardware/60cm/`: back, cut1, cut2 light wells and spacers.
+- Use `hardware/60cm/cut/faceplate_clear_600.svg` and `hardware/60cm/cut/faceplate_EN_stencil_600.svg`. Ignore the other languages.
+- Use the new frame SVGs in `hardware/60cm/cut/`: back, cut1, cut2 light wells and spacers. `backup/` holds the original stencil; `preview/` holds the overlays.
 - Make the light wells deep enough that light from one letter does not leak into the next. One well per letter, not two: the glyphs sit at different heights in their cells, so a fixed split misses parts of some letters.
 - Face sandwich: clear acrylic sheet in front, black stencil behind it. The 111 red paths in the stencil are cut out; letters read correctly from the front.
 - Registration holes at (15, 300) and (585, 300) line the two face sheets up, outside the spacer inner cut line.
 - Corner LED holes are 12 mm across, so the dots scale with the rest of the clock.
 - Keep the 4 corner LEDs at the square corners, matching the existing frame and faceplate hole positions.
-- Counter pieces inside letters such as A, D, O, P, Q and R are loose and would fall to the bottom of the cut-out on a wall-mounted clock. Decision: use **Allerta Stencil** (Google Fonts, OFL) for the production stencil; its counters are open, so nothing drops. The original outlines are kept as `hardware/60cm/faceplate_EN_stencil_original_600.svg` as a backup. Allerta's bridges must survive a sample-letter cut.
+- Counter pieces inside letters such as A, D, O, P, Q and R are loose and would fall to the bottom of the cut-out on a wall-mounted clock. Decision: use **Allerta Stencil** (Google Fonts, OFL) for the production stencil; its counters are open, so nothing drops. The original outlines are kept as `hardware/60cm/backup/faceplate_EN_stencil_original_600.svg` as a backup. Allerta's bridges must survive a sample-letter cut.
 - Cutting needs a workshop with a large bed, or the frame must be split into panels that are glued together.
 - Keep the light wells and a diffuser sheet: with a cut stencil the LEDs would otherwise show as bright dots inside each letter.
 

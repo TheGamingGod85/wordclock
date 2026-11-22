@@ -16,9 +16,13 @@ REPO = Path(__file__).resolve().parents[4]
 SVG_NS = "{http://www.w3.org/2000/svg}"
 OUT = REPO / "hardware" / "60cm"
 ARCHIVE = REPO / "hardware" / "_archive_30cm"
-ALLERTA = OUT / "fonts" / "AllertaStencil-Regular.ttf"
+CUT = OUT / "cut"
+BACKUP = OUT / "backup"
+PREVIEW = OUT / "preview"
+FONTS = OUT / "fonts"
+ALLERTA = FONTS / "AllertaStencil-Regular.ttf"
 
-CUT = "fill:none;stroke:#ff0000;stroke-width:0.5"
+CUT_STYLE = "fill:none;stroke:#ff0000;stroke-width:0.5"
 REG_LEFT = 15.0
 REG_RIGHT = 585.0
 CORNER_R = 6.0
@@ -32,12 +36,12 @@ def num(value: float) -> str:
 def rect(x: float, y: float, w: float, h: float) -> str:
     return (
         f'<rect x="{num(x)}" y="{num(y)}" width="{num(w)}" '
-        f'height="{num(h)}" style="{CUT}"/>'
+        f'height="{num(h)}" style="{CUT_STYLE}"/>'
     )
 
 
 def circle(cx: float, cy: float, r: float) -> str:
-    return f'<circle cx="{num(cx)}" cy="{num(cy)}" r="{num(r)}" style="{CUT}"/>'
+    return f'<circle cx="{num(cx)}" cy="{num(cy)}" r="{num(r)}" style="{CUT_STYLE}"/>'
 
 
 def shape_rect(x: float, y: float, w: float, h: float) -> str:
@@ -97,7 +101,7 @@ def face_files() -> int:
         circle(REG_LEFT, 300, 2),
         circle(REG_RIGHT, 300, 2),
     ]
-    (OUT / "faceplate_clear_600.svg").write_text(
+    (CUT / "faceplate_clear_600.svg").write_text(
         svg("Clear front sheet: cut from 600 x 600 mm cast acrylic.", common),
         encoding="utf-8",
     )
@@ -106,18 +110,18 @@ def face_files() -> int:
 
     # Keep the original outlines as a backup cut file.
     original = common + [matrix]
-    original += [f'<path d="{p.attrib["d"]}" style="{CUT}"/>' for p in letters]
+    original += [f'<path d="{p.attrib["d"]}" style="{CUT_STYLE}"/>' for p in letters]
     original.append("</g>")
-    (OUT / "faceplate_EN_stencil_original_600.svg").write_text(
+    (BACKUP / "faceplate_EN_stencil_original_600.svg").write_text(
         svg("Backup: original stencil outlines from the 30 cm design.", original),
         encoding="utf-8",
     )
 
     # Production stencil uses Allerta Stencil: its bridges stop letter counters falling out.
     production = common + [matrix]
-    production += stencil_font_letter_paths(ALLERTA, style=f'style="{CUT}"')
+    production += stencil_font_letter_paths(ALLERTA, style=f'style="{CUT_STYLE}"')
     production.append("</g>")
-    (OUT / "faceplate_EN_stencil_600.svg").write_text(
+    (CUT / "faceplate_EN_stencil_600.svg").write_text(
         svg(
             "Black stencil: cut these red paths out of a 600 x 600 mm sheet. "
             "Letters read correctly from the front. Allerta Stencil font.",
@@ -130,7 +134,7 @@ def face_files() -> int:
 
 def frame_files() -> None:
     # Cut1: board support and controller cavity.
-    (OUT / "frame_cut1_600.svg").write_text(
+    (CUT / "frame_cut1_600.svg").write_text(
         svg(
             "Cut from 3 mm MDF. The LED board is glued to this layer.",
             [
@@ -159,7 +163,7 @@ def frame_files() -> None:
             x = 120.172 + col * pitch_x
             y = 118.441 + row * pitch_y
             wells.append(rect(x, y, WELL, WELL))
-    (OUT / "frame_cut2_lightwells_600.svg").write_text(
+    (CUT / "frame_cut2_lightwells_600.svg").write_text(
         svg(
             "Cut from 6 mm MDF. One well per letter, scaled from the 30 cm design.",
             wells,
@@ -168,7 +172,7 @@ def frame_files() -> None:
     )
 
     # Spacers: one frame, cut as many layers as needed.
-    (OUT / "frame_spacers_600.svg").write_text(
+    (CUT / "frame_spacers_600.svg").write_text(
         svg(
             "Cut from 6 mm MDF. Repeat for each spacer layer.",
             [
@@ -183,7 +187,7 @@ def frame_files() -> None:
     )
 
     # Back panel with hatch and screw holes.
-    (OUT / "frame_back_600.svg").write_text(
+    (CUT / "frame_back_600.svg").write_text(
         svg(
             "Cut from the 600 x 600 mm back panel.",
             [
@@ -328,28 +332,29 @@ def overlay_file(name: str = "overlay_600.svg", letter_paths: list[str] | None =
         + "\n".join(groups + legend)
         + "\n</svg>\n"
     )
-    (OUT / name).write_text(content, encoding="utf-8")
+    (PREVIEW / name).write_text(content, encoding="utf-8")
 
 
 def main() -> None:
-    OUT.mkdir(parents=True, exist_ok=True)
+    for folder in (CUT, BACKUP, PREVIEW, FONTS):
+        folder.mkdir(parents=True, exist_ok=True)
     backup()
     count = face_files()
     frame_files()
     overlay_file("overlay_600.svg", stencil_font_letter_paths(ALLERTA))
     overlay_file("overlay_original_stencil_600.svg")
     overlay_file("overlay_stencil_font_600.svg", stencil_font_letter_paths(Path("C:/Windows/Fonts/STENCIL.TTF")))
-    font_dir = OUT / "fonts"
-    for font_file in sorted(font_dir.glob("*.ttf")):
+    for font_file in sorted(FONTS.glob("*.ttf")):
         if font_file == ALLERTA:
             continue  # overlay_600.svg already shows the chosen font
         name = f"overlay_{font_file.stem}_600.svg"
         overlay_file(name, stencil_font_letter_paths(font_file))
         print(f"  font preview: {name}")
     print(f"Archived 30 cm templates in {ARCHIVE.relative_to(REPO)}")
-    print(f"Generated {count} letter cut paths and {len(list(OUT.glob('*.svg')))} SVG files in {OUT.relative_to(REPO)}")
-    for path in sorted(OUT.glob("*.svg")):
-        print(f"  {path.name}: {path.stat().st_size} bytes")
+    print(f"Generated {count} letter cut paths in {OUT.relative_to(REPO)}")
+    for folder in (CUT, BACKUP, PREVIEW):
+        for path in sorted(folder.glob("*.svg")):
+            print(f"  {path.relative_to(OUT)}: {path.stat().st_size} bytes")
 
 
 if __name__ == "__main__":
