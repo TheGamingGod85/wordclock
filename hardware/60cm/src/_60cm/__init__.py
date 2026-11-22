@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from fontTools.misc.transform import Transform
+from fontTools.pens.boundsPen import BoundsPen
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
 from fontTools.ttLib import TTFont
@@ -228,7 +229,10 @@ def stencil_font_letter_paths(
             transform = Transform(scale, 0, 0, -scale, x + advance, y)
             glyphs[name].draw(TransformPen(pen, transform))
             paths.append(f'<path d="{pen.getCommands()}" {style}/>')
-            advance += font["hmtx"][name][0] * scale
+            # Advance by ink width, not the font's full em, so O' stays inside its well.
+            bounds = BoundsPen(glyphs)
+            glyphs[name].draw(bounds)
+            advance += (bounds.bounds[2] - bounds.bounds[0]) * scale + 2
     return paths
 
 
