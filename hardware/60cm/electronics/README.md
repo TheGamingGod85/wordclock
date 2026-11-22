@@ -47,6 +47,12 @@ The four old capacitive touch pads are gone. GPIO 12, 13, 14 and 27 are free.
 - Keep the level shifter: the first WS2812B wants a 5 V data pulse, while the
   ESP32 only outputs 3.3 V.
 
+## Previews
+
+`preview/wordclock_60cm_schematic.svg` and the other two SVGs in that folder are
+rendered views of the sketch. They are for reading only — open the `.fzz` in
+Fritzing to edit it.
+
 ## What is not in this sketch
 
 This is the **circuit**, not the flat PCB layout. The 60 cm LED PCB itself
