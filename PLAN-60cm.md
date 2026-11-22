@@ -10,7 +10,7 @@ Make a 60 cm × 60 cm version of the wordclock. English only.
 
 - Keep the **same 110 English letters** and the same word layout as the current clock.
 - Make the letters about **twice as big** as today.
-- Put **two LEDs in each letter**: one lighting the top half, one lighting the bottom half.
+- Put **two LEDs in each letter**, both behind one light well, so the whole letter lights evenly.
 - Use a **flat board (PCB) with solder pads**, like the Nodo kit, instead of long LED strips.
 - Use **acrylic for the face, not glass**. It is lighter, easier to cut and drill, and cheap to replace.
 - Make the face as a **sandwich: clear acrylic in front, laser-cut black stencil behind it**. No spray paint, no etching, no two-tone sheet.
@@ -41,7 +41,7 @@ Big letters and a small code change are more important here.
 | Corner minute dots | 4 | 4 |
 | Total LEDs | 114 | 224 |
 | Step between letters | 16.6 mm wide × 18.6 mm tall | 33 mm wide × 37 mm tall |
-| Hole for one letter | 13.8 × 13.8 mm, one per letter | 27.6 × 13.8 mm each, two stacked per letter |
+| Hole for one letter | 13.8 × 13.8 mm, one per letter | 27.6 × 27.6 mm, one per letter |
 | Lit area | about 18 × 19 cm | about 37 × 37 cm |
 | Power supply | 5 V / 6 A | 5 V / about 15 A |
 
@@ -53,17 +53,19 @@ The printed letter itself is about 13 mm font size: a capital is roughly 9 mm ta
 
 - Use `hardware/60cm/faceplate_clear_600.svg` and `hardware/60cm/faceplate_EN_stencil_600.svg`. Ignore the other languages.
 - Use the new frame SVGs in `hardware/60cm/`: back, cut1, cut2 light wells and spacers.
-- Make the light wells deeper or add dividers, so light from one letter does not leak into the next.
+- Make the light wells deep enough that light from one letter does not leak into the next. One well per letter, not two: the glyphs sit at different heights in their cells, so a fixed split misses parts of some letters.
 - Face sandwich: clear acrylic sheet in front, black stencil behind it. The 111 red paths in the stencil are cut out; letters read correctly from the front.
-- Registration holes at (30, 300) and (570, 300) line the two face sheets up and sit under the frame border.
+- Registration holes at (15, 300) and (585, 300) line the two face sheets up, outside the spacer inner cut line.
+- Corner LED holes are 12 mm across, so the dots scale with the rest of the clock.
 - Keep the 4 corner LEDs at the square corners, matching the existing frame and faceplate hole positions.
+- The counter pieces inside letters such as A, D, O, P, Q and R stay put once the stencil is clamped between the clear front and the diffuser. No bridges needed.
 - Cutting needs a workshop with a large bed, or the frame must be split into panels that are glued together.
 - Keep the light wells and a diffuser sheet: with a cut stencil the LEDs would otherwise show as bright dots inside each letter.
 
 ### 2. LED board
 
 - One flat board holding 220 LEDs in 10 rows of 11, plus the 4 corner LEDs.
-- Two pads per letter, close together vertically, so both halves of a letter light evenly.
+- Two pads per letter, close together behind the one well, so the letter lights evenly.
 - Serpentine data wiring as today; power fed in from several points on the board.
 - The board sits inside the frame where the LED strips are today.
 - Testing: build one sample letter with 2 LEDs first and check that the letter looks evenly lit. Do this before ordering the full board.

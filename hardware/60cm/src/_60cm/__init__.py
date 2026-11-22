@@ -12,6 +12,10 @@ OUT = REPO / "hardware" / "60cm"
 ARCHIVE = REPO / "hardware" / "_archive_30cm"
 
 CUT = "fill:none;stroke:#ff0000;stroke-width:0.5"
+REG_LEFT = 15.0
+REG_RIGHT = 585.0
+CORNER_R = 6.0
+WELL = 27.6
 
 
 def num(value: float) -> str:
@@ -27,6 +31,17 @@ def rect(x: float, y: float, w: float, h: float) -> str:
 
 def circle(cx: float, cy: float, r: float) -> str:
     return f'<circle cx="{num(cx)}" cy="{num(cy)}" r="{num(r)}" style="{CUT}"/>'
+
+
+def shape_rect(x: float, y: float, w: float, h: float) -> str:
+    return (
+        f'<rect x="{num(x)}" y="{num(y)}" width="{num(w)}" '
+        f'height="{num(h)}"/>'
+    )
+
+
+def shape_circle(cx: float, cy: float, r: float) -> str:
+    return f'<circle cx="{num(cx)}" cy="{num(cy)}" r="{num(r)}"/>'
 
 
 def svg(comment: str, lines: list[str]) -> str:
@@ -68,12 +83,12 @@ def face_files() -> int:
 
     common = [
         rect(0, 0, 600, 600),
-        circle(40.06, 40.05, 4),
-        circle(559.94, 40.05, 4),
-        circle(40.06, 559.95, 4),
-        circle(559.94, 559.95, 4),
-        circle(30, 300, 2),
-        circle(570, 300, 2),
+        circle(40.06, 40.05, CORNER_R),
+        circle(559.94, 40.05, CORNER_R),
+        circle(40.06, 559.95, CORNER_R),
+        circle(559.94, 559.95, CORNER_R),
+        circle(REG_LEFT, 300, 2),
+        circle(REG_RIGHT, 300, 2),
     ]
     (OUT / "faceplate_clear_600.svg").write_text(
         svg("Clear front sheet: cut from 600 x 600 mm cast acrylic.", common),
@@ -106,34 +121,32 @@ def frame_files() -> None:
             [
                 rect(0, 0, 600, 600),
                 rect(220, 500, 160, 100),
-                circle(30, 300, 2),
-                circle(570, 300, 2),
+                circle(REG_LEFT, 300, 2),
+                circle(REG_RIGHT, 300, 2),
             ],
         ),
         encoding="utf-8",
     )
 
-    # Cut2: two stacked wells per letter.
+    # Cut2: one well per letter, the 30 cm hole scaled by two.
     corner_holes = [
-        circle(40.06, 40.05, 4),
-        circle(559.94, 40.05, 4),
-        circle(40.06, 559.95, 4),
-        circle(559.94, 559.95, 4),
-        circle(30, 300, 2),
-        circle(570, 300, 2),
+        circle(40.06, 40.05, CORNER_R),
+        circle(559.94, 40.05, CORNER_R),
+        circle(40.06, 559.95, CORNER_R),
+        circle(559.94, 559.95, CORNER_R),
+        circle(REG_LEFT, 300, 2),
+        circle(REG_RIGHT, 300, 2),
     ]
     wells = [rect(0, 0, 600, 600), *corner_holes]
     pitch_x, pitch_y = 33.2, 37.2714
-    top_inset = (pitch_y - (13.8 * 2 + 4)) / 2
     for row in range(10):
         for col in range(11):
             x = 120.172 + col * pitch_x
             y = 118.441 + row * pitch_y
-            wells.append(rect(x, y + top_inset, 27.6, 13.8))
-            wells.append(rect(x, y + top_inset + 17.8, 27.6, 13.8))
+            wells.append(rect(x, y, WELL, WELL))
     (OUT / "frame_cut2_lightwells_600.svg").write_text(
         svg(
-            "Cut from 6 mm MDF. Two wells per letter light the top and bottom halves.",
+            "Cut from 6 mm MDF. One well per letter, scaled from the 30 cm design.",
             wells,
         ),
         encoding="utf-8",
@@ -147,8 +160,8 @@ def frame_files() -> None:
                 rect(0, 0, 600, 600),
                 rect(30, 30, 540, 540),
                 rect(250, 570, 100, 30),
-                circle(30, 300, 2),
-                circle(570, 300, 2),
+                circle(REG_LEFT, 300, 2),
+                circle(REG_RIGHT, 300, 2),
             ],
         ),
         encoding="utf-8",
@@ -165,12 +178,113 @@ def frame_files() -> None:
                 circle(575, 25, 3),
                 circle(25, 575, 3),
                 circle(575, 575, 3),
-                circle(30, 300, 2),
-                circle(570, 300, 2),
+                circle(REG_LEFT, 300, 2),
+                circle(REG_RIGHT, 300, 2),
             ],
         ),
         encoding="utf-8",
     )
+
+
+def overlay_file() -> None:
+    source = REPO / "hardware" / "faceplate" / "glass_template_EN_mirrored.svg"
+    root = ET.parse(source).getroot()
+    letters = [
+        p
+        for p in root.iter(f"{SVG_NS}path")
+        if "style" not in p.attrib and "fill" not in p.attrib
+    ]
+    scale = 2.0 * 25.4 / 96.0
+    a = 1.3325375 * scale
+    d = 1.3326584 * scale
+
+    corners = [
+        (40.06, 40.05),
+        (559.94, 40.05),
+        (40.06, 559.95),
+        (559.94, 559.95),
+    ]
+    reg = [shape_circle(REG_LEFT, 300, 2), shape_circle(REG_RIGHT, 300, 2)]
+
+    def group(name: str, color: str, lines: list[str]) -> str:
+        return (
+            f'<g id="{name}" stroke="{color}" fill="none" stroke-width="0.6">\n'
+            + "\n".join(lines)
+            + "\n</g>"
+        )
+
+    back = [shape_rect(0, 0, 600, 600), shape_rect(50, 50, 500, 500)]
+    back += [shape_circle(x, y, 3) for x, y in ((25, 25), (575, 25), (25, 575), (575, 575))]
+    back += reg
+
+    spacers = [shape_rect(0, 0, 600, 600), shape_rect(30, 30, 540, 540), shape_rect(250, 570, 100, 30)] + reg
+    cut1 = [shape_rect(0, 0, 600, 600), shape_rect(220, 500, 160, 100)] + reg
+
+    wells = [shape_rect(0, 0, 600, 600)]
+    wells += [shape_circle(x, y, CORNER_R) for x, y in corners]
+    wells += reg
+    pitch_x, pitch_y = 33.2, 37.2714
+    for row in range(10):
+        for col in range(11):
+            x = 120.172 + col * pitch_x
+            y = 118.441 + row * pitch_y
+            wells.append(shape_rect(x, y, WELL, WELL))
+
+    stencil = [shape_rect(0, 0, 600, 600)]
+    stencil += [shape_circle(x, y, CORNER_R) for x, y in corners]
+    stencil += reg
+    stencil.append(f'<g transform="matrix({num(a)},0,0,{num(d)},0,0)">')
+    stencil += [f'<path d="{p.attrib["d"]}"/>' for p in letters]
+    stencil.append("</g>")
+
+    clear = [shape_rect(0, 0, 600, 600)]
+    clear += [shape_circle(x, y, CORNER_R) for x, y in corners]
+    clear += reg
+
+    groups = [
+        group("back_panel", "#777777", back),
+        group("spacers", "#e69500", spacers),
+        group("cut1_board_support", "#1f77b4", cut1),
+        group("cut2_light_wells", "#2ca02c", wells),
+        group("black_stencil", "#9467bd", stencil),
+        group("clear_front", "#17becf", clear),
+    ]
+
+    legend = [
+        '<text x="620" y="35" font-family="sans-serif" font-size="16" fill="#111">60 cm wordclock - layer overlay</text>',
+        '<text x="620" y="60" font-family="sans-serif" font-size="12" fill="#111">Front to back:</text>',
+    ]
+    labels = [
+        ("Clear acrylic front", "#17becf"),
+        ("Black stencil", "#9467bd"),
+        ("Cut2 light wells", "#2ca02c"),
+        ("Cut1 LED support", "#1f77b4"),
+        ("Spacers", "#e69500"),
+        ("Back panel", "#777777"),
+    ]
+    for index, (label, color) in enumerate(labels):
+        y = 85 + index * 24
+        legend.append(
+            f'<line x1="620" y1="{y}" x2="650" y2="{y}" stroke="{color}" stroke-width="3"/>'
+        )
+        legend.append(
+            f'<text x="660" y="{y + 4}" font-family="sans-serif" font-size="12" fill="#111">{label}</text>'
+        )
+    legend.append(
+        '<text x="620" y="270" font-family="sans-serif" font-size="11" fill="#111">'
+        f'Registration holes: ({num(REG_LEFT)}, 300) and ({num(REG_RIGHT)}, 300)'
+        "</text>"
+    )
+
+    content = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<svg xmlns="http://www.w3.org/2000/svg" width="900mm" height="600mm" '
+        'viewBox="0 0 900 600">\n'
+        "<!-- Layers drawn back-to-front; legend lists them front-to-back. -->\n"
+        + "\n".join(groups + legend)
+        + "\n</svg>\n"
+    )
+    (OUT / "overlay_600.svg").write_text(content, encoding="utf-8")
 
 
 def main() -> None:
@@ -178,8 +292,9 @@ def main() -> None:
     backup()
     count = face_files()
     frame_files()
+    overlay_file()
     print(f"Archived 30 cm templates in {ARCHIVE.relative_to(REPO)}")
-    print(f"Generated {count} letter cut paths and 6 SVG files in {OUT.relative_to(REPO)}")
+    print(f"Generated {count} letter cut paths and 7 SVG files in {OUT.relative_to(REPO)}")
     for path in sorted(OUT.glob("*.svg")):
         print(f"  {path.name}: {path.stat().st_size} bytes")
 
