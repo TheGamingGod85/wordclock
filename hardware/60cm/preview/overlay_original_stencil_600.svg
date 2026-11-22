@@ -20,7 +20,7 @@
 </g>
 <g id="cut1_board_support" stroke="#1f77b4" fill="none" stroke-width="0.6">
 <rect x="0" y="0" width="600" height="600"/>
-<rect x="220" y="500" width="160" height="100"/>
+<rect x="200" y="500" width="200" height="100"/>
 <circle cx="15" cy="300" r="2"/>
 <circle cx="585" cy="300" r="2"/>
 </g>

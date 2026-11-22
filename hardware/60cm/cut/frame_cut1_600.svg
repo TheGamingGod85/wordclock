@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600mm" height="600mm" viewBox="0 0 600 600">
 <!-- Cut from 3 mm MDF. The LED board is glued to this layer. -->
 <rect x="0" y="0" width="600" height="600" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
-<rect x="220" y="500" width="160" height="100" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
+<rect x="200" y="500" width="200" height="100" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
 <circle cx="15" cy="300" r="2" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
 <circle cx="585" cy="300" r="2" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
 </svg>

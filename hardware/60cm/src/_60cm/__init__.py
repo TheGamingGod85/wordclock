@@ -140,7 +140,7 @@ def frame_files() -> None:
             "Cut from 3 mm MDF. The LED board is glued to this layer.",
             [
                 rect(0, 0, 600, 600),
-                rect(220, 500, 160, 100),
+                rect(200, 500, 200, 100),
                 circle(REG_LEFT, 300, 2),
                 circle(REG_RIGHT, 300, 2),
             ],
@@ -268,7 +268,7 @@ def overlay_file(name: str = "overlay_600.svg", letter_paths: list[str] | None =
     back += reg
 
     spacers = [shape_rect(0, 0, 600, 600), shape_rect(30, 30, 540, 540), shape_rect(250, 570, 100, 30)] + reg
-    cut1 = [shape_rect(0, 0, 600, 600), shape_rect(220, 500, 160, 100)] + reg
+    cut1 = [shape_rect(0, 0, 600, 600), shape_rect(200, 500, 200, 100)] + reg
 
     wells = [shape_rect(0, 0, 600, 600)]
     wells += [shape_circle(x, y, CORNER_R) for x, y in corners]
