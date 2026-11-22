@@ -1,60 +1,76 @@
 # 60 cm electronics
 
-`wordclock_60cm.fzz` is the circuit for the 60 cm clock. Open it in Fritzing.
-It reuses the original 30 cm wiring, with the LED panel updated for this build
-and the unused corner touch pads removed.
+`wordclock_60cm.fzz` is the complete 60 cm circuit sketch. Open it in Fritzing.
+It contains the **224 individual WS2812B LEDs** placed at the real 60 cm
+well/corner coordinates, plus a **proto-board controller** that fits the
+200 × 100 mm frame cavity.
 
-## Parts
+## Boards
+
+| Board | Part | Purpose |
+| --- | --- | --- |
+| PCB_LED_PANEL | Two-layer rectangular PCB, 380 × 390 mm | Carries all 224 WS2812B LEDs at the 60 cm well/corner positions |
+| PROTO_CTRL | Basic perfboard/proto board | Controller assembly in the 200 × 100 mm frame cavity |
+
+## Controller parts (on proto board)
 
 | Ref | Part | Purpose |
 | --- | --- | --- |
-| J1 | 5 V power jack | External supply, **5 V / 15 A** recommended |
-| C1 | 1000 µF capacitor | Inrush protection across the 5 V rail |
-| U2 | ESP32 dev board | WiFi, timekeeping, LED data |
-| RTC1 | DS3231 (ZS-042) | Keeps time when offline; CR2032 backup battery |
-| LDR + R1 | Photocell + 10 kΩ | Ambient light sensor on ADC1 |
-| L1 | 4-channel level shifter | 3.3 V data from ESP32 to 5 V LED chain |
-| LED1 | WS2812B panel | All **224 LEDs**: 110 letters × 2 + 4 corner dots |
+| J1_BARREL_5V | 5.5 × 2.1 mm barrel jack | 5 V input from a **5 V / 10 A+** supply (15 A recommended for full white margin) |
+| U2_BUCK_5V | RioRand LM2596 buck module | Steps/ regulates input to a stable 5.00 V rail before connecting LEDs |
+| C1_1000uF | 1000 µF electrolytic capacitor | Across 5 V/GND near power entry; observe polarity |
+| U1_ESP32 | ESP32 DevKitC on female headers | Plugs into two female header rows on the proto board; removable for programming/replacement |
+| R1_470 | 470 Ω resistor | In series on LED data line, close to the JST/data output |
+| J2_JST_DATA | 3-pin JST connector | 5 V / GND / DATA output to the LED panel (use JST-XH/PH/SM as you prefer, but keep pinout consistent) |
+| RTC1_DS3231 | DS3231 RTC breakout | Optional: keeps time when offline |
+| LVL1 | 4-channel level shifter | Optional but recommended: 3.3 V ESP32 data/SCL/SDA to 5 V-safe levels |
+| LDR1 + R2_10K | LDR + 10 kΩ divider | Optional: ambient light on ADC |
 
-`LED1` is one Fritzing part standing for the whole daisy chain, exactly as the
-original sketch used one LED for its 114-LED strip. The properties on the part
-record the real count and layout.
+## LED panel
+
+- **224 LEDs total**: 110 letters × 2 LEDs each + 4 corner minute dots.
+- **Chain order**: row-serpentine by letter wells (matching 60 cm layout), corners last.
+- **Placement**: each LED instance is positioned at its real 60 cm coordinate in PCB view.
+- **Power**: connect 5 V and GND to every LED/power pad as required by the physical PCB; the sketch shows sampled power wires for readability, but the real panel must have solid 5 V/GND distribution and power injection at row ends/bands.
+- **Data**: single chain `DOUT -> DIN` through the panel; only data is daisy-chained.
 
 ## Connections
 
 | From | To | Signal |
 | --- | --- | --- |
-| J1 PWR | C1 +, U2 VIN, L1 HV, LED1 VCC | 5 V rail |
-| J1 GND | C1 −, U2 GND, L1 GND, LED1 VSS, RTC1 GND | Ground |
-| U2 3V3 | RTC1 VCC, L1 LV, LDR pin 1 | 3.3 V rail |
-| U2 D21 | RTC1 SDA | I²C data |
-| U2 D22 | RTC1 SCL | I²C clock |
-| U2 D32 | L1 LV4 | LED data out of ESP32 |
-| L1 HV4 | LED1 DIN | 5 V LED data |
-| LDR pin 0 | R1 pin 0 | Light sensor divider |
-| R1 pin 1 | U2 D33 | ADC1 light reading |
+| J1_BARREL_5V | U2_BUCK_5V IN+/IN− | Supply input |
+| U2_BUCK_5V OUT+ | C1 +, U1_ESP32 5V/VIN, J2_JST_DATA 5V, LED panel 5V | 5 V rail |
+| U2_BUCK_5V OUT− | C1 −, U1_ESP32 GND, J2_JST_DATA GND, LED panel GND | Common ground |
+| U1_ESP32 GPIO27 (data) | R1_470 -> J2_JST_DATA DATA | LED data |
+| J2_JST_DATA DATA | LED1 DIN ... LED224 DOUT chain | WS2812B data chain |
+| U1_ESP32 3V3/SDA/SCL | LVL1/RTC1 | Optional I²C |
+| LDR1/R2_10K | U1_ESP32 ADC | Optional light sensor |
 
-The four old capacitive touch pads are gone. GPIO 12, 13, 14 and 27 are free.
+> **Check in Fritzing GUI before soldering.** The sketch passes `fz check`, but
+> ESP32 pin labels/connectors vary by Fritzing part. Confirm GPIO27/5V/GND/3V3/SDA/SCL/ADC
+> on the placed ESP32 part before wiring the proto board.
 
-## Power and wiring notes
+## Power notes
 
-- Worst case for 224 WS2812B at full white is about 13.4 A, so use a 5 V supply
-  rated for at least 15 A. Normal clock colours use far less.
-- Feed 5 V and GND into the flat LED PCB at **several points** (one per row of
-  22 LEDs). Only the data line needs to be a single chain from row to row.
-- `C1` sits at the supply entry, not at the far end of the LED panel.
-- The data order is row by row, matching `ClockFace.cpp` in the firmware.
-- Keep the level shifter: the first WS2812B wants a 5 V data pulse, while the
-  ESP32 only outputs 3.3 V.
+- Set the buck to **5.00 V** with no LEDs connected, then connect LEDs.
+- Worst case 224 WS2812B full white is ~13.4 A; normal clock colours are much lower.
+- Keep one common ground: ESP32, buck, capacitor, JST, and LED panel.
+- Power the ESP32 from the regulated 5 V rail through its 5V/VIN pin, or use USB
+  only for programming/debug. Do not feed 5 V into 3.3 V.
+- `C1` goes at the power entry, close to the buck/proto output.
 
 ## Previews
 
-`preview/wordclock_60cm_schematic.svg` and the other two SVGs in that folder are
-rendered views of the sketch. They are for reading only — open the `.fzz` in
-Fritzing to edit it.
+`preview/` contains rendered breadboard/schematic/PCB SVGs. They are read-only
+references; edit the `.fzz` in Fritzing.
 
-## What is not in this sketch
+## What is not fabrication-ready
 
-This is the **circuit**, not the flat PCB layout. The 60 cm LED PCB itself
-(footprints, row power injection pads and connector positions) is still to be
-designed; the cut files for the face and frame are in `../cut/`.
+- The LED panel is **electrically/logically represented** in Fritzing with 224
+  placed WS2812B parts and a rectangular PCB outline. For a real flat LED PCB,
+  you still need PCB CAD (KiCad/EasyEDA/etc.) for footprints, copper pours/traces,
+  row power injection pads, JST landing pads, and mounting holes.
+- The proto-board controller is intended for hand soldering on perfboard, not as
+  a fabricated controller PCB.
+- Corner capacitive touch pads are intentionally omitted (legacy, not used by
+  firmware).
