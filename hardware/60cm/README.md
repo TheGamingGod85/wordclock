@@ -15,7 +15,13 @@ Run `uv run 60cm` from this folder to regenerate every SVG. It uses only the Pyt
 | `frame_spacers_600.svg` | 6 mm MDF | One frame; cut as many layers as needed. |
 | `frame_back_600.svg` | back panel | Hatch and screw holes. |
 | `overlay_600.svg` | preview only | All six layers stacked; legend lists them front to back. |
-| `overlay_stencil_font_600.svg` | preview only | Same stack, but letters drawn with `STENCIL.TTF` (C:\Windows\Fonts) to compare bridges. Not a cut file. |
+| `overlay_stencil_font_600.svg` | preview only | Same stack, letters from Windows `STENCIL.TTF`. Not a cut file. |
+| `overlay_AllertaStencil-Regular_600.svg` | preview only | Same stack, Google Fonts "Allerta Stencil". |
+| `overlay_BigShouldersStencilDisplay_600.svg` | preview only | Same stack, Google Fonts "Big Shoulders Stencil Display". |
+| `overlay_StardosStencil-Bold_600.svg` | preview only | Same stack, Google Fonts "Stardos Stencil Bold". |
+| `overlay_StardosStencil-Regular_600.svg` | preview only | Same stack, Google Fonts "Stardos Stencil Regular". |
+| `fonts/*.ttf` | source | The Google Fonts used for the previews above (OFL licensed). |
+| `font_compare.png` | preview only | Side-by-side sample of all five fonts. |
 
 All cut lines are red (`#ff0000`), fill none, 0.5 mm stroke. The sheets are 600 × 600 mm.
 

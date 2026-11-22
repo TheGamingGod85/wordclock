@@ -190,8 +190,7 @@ def frame_files() -> None:
     )
 
 
-def stencil_font_letter_paths() -> list[str]:
-    font_path = Path("C:/Windows/Fonts/STENCIL.TTF")
+def stencil_font_letter_paths(font_path: Path) -> list[str]:
     font = TTFont(font_path)
     cmap = font.getBestCmap()
     glyphs = font.getGlyphSet()
@@ -211,7 +210,7 @@ def stencil_font_letter_paths() -> list[str]:
             glyphs[name].draw(pen)
             paths.append(
                 f'<path d="{pen.getCommands()}" transform="translate({num(x + advance)},{num(y)}) '
-                f'scale({num(scale)},{num(-scale)})"/>'
+                f'scale({num(scale)},{num(-scale)})" fill="#9467bd" stroke="none"/>'
             )
             advance += font["hmtx"][name][0] * scale
     return paths
@@ -326,9 +325,14 @@ def main() -> None:
     count = face_files()
     frame_files()
     overlay_file()
-    overlay_file("overlay_stencil_font_600.svg", stencil_font_letter_paths())
+    overlay_file("overlay_stencil_font_600.svg", stencil_font_letter_paths(Path("C:/Windows/Fonts/STENCIL.TTF")))
+    font_dir = OUT / "fonts"
+    for font_file in sorted(font_dir.glob("*.ttf")):
+        name = f"overlay_{font_file.stem}_600.svg"
+        overlay_file(name, stencil_font_letter_paths(font_file))
+        print(f"  font preview: {name}")
     print(f"Archived 30 cm templates in {ARCHIVE.relative_to(REPO)}")
-    print(f"Generated {count} letter cut paths and 8 SVG files in {OUT.relative_to(REPO)}")
+    print(f"Generated {count} letter cut paths and {len(list(OUT.glob('*.svg')))} SVG files in {OUT.relative_to(REPO)}")
     for path in sorted(OUT.glob("*.svg")):
         print(f"  {path.name}: {path.stat().st_size} bytes")
 
