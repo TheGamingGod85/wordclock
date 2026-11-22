@@ -7,13 +7,16 @@ import shutil
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from fontTools.misc.transform import Transform
 from fontTools.pens.svgPathPen import SVGPathPen
+from fontTools.pens.transformPen import TransformPen
 from fontTools.ttLib import TTFont
 
 REPO = Path(__file__).resolve().parents[4]
 SVG_NS = "{http://www.w3.org/2000/svg}"
 OUT = REPO / "hardware" / "60cm"
 ARCHIVE = REPO / "hardware" / "_archive_30cm"
+ALLERTA = OUT / "fonts" / "AllertaStencil-Regular.ttf"
 
 CUT = "fill:none;stroke:#ff0000;stroke-width:0.5"
 REG_LEFT = 15.0
@@ -99,18 +102,26 @@ def face_files() -> int:
         encoding="utf-8",
     )
 
-    stencil = common + [
-        f'<g transform="matrix({num(a)},0,0,{num(d)},0,0)">'
-    ]
-    stencil += [
-        f'<path d="{p.attrib["d"]}" style="{CUT}"/>' for p in letters
-    ]
-    stencil.append("</g>")
+    matrix = f'<g transform="matrix({num(a)},0,0,{num(d)},0,0)">'
+
+    # Keep the original outlines as a backup cut file.
+    original = common + [matrix]
+    original += [f'<path d="{p.attrib["d"]}" style="{CUT}"/>' for p in letters]
+    original.append("</g>")
+    (OUT / "faceplate_EN_stencil_original_600.svg").write_text(
+        svg("Backup: original stencil outlines from the 30 cm design.", original),
+        encoding="utf-8",
+    )
+
+    # Production stencil uses Allerta Stencil: its bridges stop letter counters falling out.
+    production = common + [matrix]
+    production += stencil_font_letter_paths(ALLERTA, style=f'style="{CUT}"')
+    production.append("</g>")
     (OUT / "faceplate_EN_stencil_600.svg").write_text(
         svg(
             "Black stencil: cut these red paths out of a 600 x 600 mm sheet. "
-            "Letters read correctly from the front.",
-            stencil,
+            "Letters read correctly from the front. Allerta Stencil font.",
+            production,
         ),
         encoding="utf-8",
     )
@@ -190,7 +201,9 @@ def frame_files() -> None:
     )
 
 
-def stencil_font_letter_paths(font_path: Path) -> list[str]:
+def stencil_font_letter_paths(
+    font_path: Path, style: str = 'fill="#9467bd" stroke="none"'
+) -> list[str]:
     font = TTFont(font_path)
     cmap = font.getBestCmap()
     glyphs = font.getGlyphSet()
@@ -198,20 +211,19 @@ def stencil_font_letter_paths(font_path: Path) -> list[str]:
     source = REPO / "hardware" / "faceplate" / "glass-template-EN-font.svg"
     root = ET.parse(source).getroot()
     paths: list[str] = []
+    scale = 36 / units
     for text in root.iter(f"{SVG_NS}text"):
         x, y = map(float, re.search(r"translate\(([\d.]+),([\d.]+)\)", text.attrib["transform"]).groups())
-        scale = 36 / units
         advance = 0.0
         for char in "".join(text.itertext()):
             name = cmap.get(ord(char))
             if name is None:
                 continue
             pen = SVGPathPen(glyphs)
-            glyphs[name].draw(pen)
-            paths.append(
-                f'<path d="{pen.getCommands()}" transform="translate({num(x + advance)},{num(y)}) '
-                f'scale({num(scale)},{num(-scale)})" fill="#9467bd" stroke="none"/>'
-            )
+            # Bake placement into the outline so a 0.5 mm cut stroke stays 0.5 mm.
+            transform = Transform(scale, 0, 0, -scale, x + advance, y)
+            glyphs[name].draw(TransformPen(pen, transform))
+            paths.append(f'<path d="{pen.getCommands()}" {style}/>')
             advance += font["hmtx"][name][0] * scale
     return paths
 
@@ -324,10 +336,13 @@ def main() -> None:
     backup()
     count = face_files()
     frame_files()
-    overlay_file()
+    overlay_file("overlay_600.svg", stencil_font_letter_paths(ALLERTA))
+    overlay_file("overlay_original_stencil_600.svg")
     overlay_file("overlay_stencil_font_600.svg", stencil_font_letter_paths(Path("C:/Windows/Fonts/STENCIL.TTF")))
     font_dir = OUT / "fonts"
     for font_file in sorted(font_dir.glob("*.ttf")):
+        if font_file == ALLERTA:
+            continue  # overlay_600.svg already shows the chosen font
         name = f"overlay_{font_file.stem}_600.svg"
         overlay_file(name, stencil_font_letter_paths(font_file))
         print(f"  font preview: {name}")
