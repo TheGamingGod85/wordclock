@@ -36,10 +36,12 @@ Big letters and a small code change are more important here.
 | LEDs for letters | 110 (one per letter) | 220 (two per letter) |
 | Corner minute dots | 4 | 4 |
 | Total LEDs | 114 | 224 |
-| Step between letters | about 17 mm | about 33 mm |
-| Hole for one letter | about 14 mm | about 28 mm |
-| Lit area | about 18 × 17 cm | about 36 × 33 cm |
+| Step between letters | 16.6 mm wide × 18.6 mm tall | 33 mm wide × 37 mm tall |
+| Hole for one letter | 13.8 mm × 13.8 mm | 28 mm × 28 mm |
+| Lit area | about 18 × 19 cm | about 37 × 37 cm |
 | Power supply | 5 V / 6 A | 5 V / about 15 A |
+
+The printed letter itself is about 13 mm font size: a capital is roughly 9 mm tall and 3–12 mm wide depending on the letter (I is narrow, W is wide). A "27 mm" figure does not match this repo's files; it may come from the Nodo kit or another clock.
 
 ## Work list
 
@@ -84,7 +86,7 @@ The words stay exactly where they are. Only the "one letter = two LEDs" rule is 
 
 ## Still to decide later
 
-- One big PCB (~36 × 33 cm) or ten smaller boards, one per row. One board is closer to the Nodo idea; smaller boards are cheaper and easier to replace.
+- One big PCB (~37 × 37 cm) or ten smaller boards, one per row. One board is closer to the Nodo idea; smaller boards are cheaper and easier to replace.
 - Which workshop can cut the frame and etch the glass.
 - Final letter size on the faceplate, after seeing the sample letter.
 - Exact board size and connector positions, once the frame design is fixed.
