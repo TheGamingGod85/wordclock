@@ -13,6 +13,8 @@ Make a 60 cm × 60 cm version of the wordclock. English only.
 - Put **two LEDs in each letter**: one lighting the top half, one lighting the bottom half.
 - Use a **flat board (PCB) with solder pads**, like the Nodo kit, instead of long LED strips.
 - Use **acrylic for the face, not glass**. It is lighter, easier to cut and drill, and cheap to replace.
+- Make the face as a **sandwich: clear acrylic in front, laser-cut black stencil behind it**. No spray paint, no etching, no two-tone sheet.
+- Keep the **square corners**. No octagon or clipped corners, so the 4 corner minute LEDs stay where they are.
 - Keep the current way of telling time: words in 5-minute steps, plus 4 corner dots for the leftover minutes.
   For example, 4:39 still shows "IT IS TWENTY-FIVE TO FIVE" + 4 dots.
 
@@ -51,7 +53,9 @@ The printed letter itself is about 13 mm font size: a capital is roughly 9 mm ta
 - Scale the English faceplate SVG to 600 × 600 mm. Ignore the other languages.
 - Scale the frame SVGs: back panel, LED support, light wells and spacers.
 - Make the light wells deeper or add dividers, so light from one letter does not leak into the next.
-- Acrylic face panel, 60 × 60 cm. Two possible ways to make the letters are listed under "Still to decide later".
+- Face sandwich: 60 × 60 cm clear acrylic sheet in front, with a 60 × 60 cm black stencil behind it. The letters are cut out of the stencil.
+- Add registration holes or tabs so the clear sheet and the stencil line up over the whole 600 mm.
+- Keep the 4 corner LEDs at the square corners, matching the existing frame and faceplate hole positions.
 - Cutting needs a workshop with a large bed, or the frame must be split into panels that are glued together.
 - Keep the light wells and a diffuser sheet: with a cut stencil the LEDs would otherwise show as bright dots inside each letter.
 
@@ -89,9 +93,7 @@ The words stay exactly where they are. Only the "one letter = two LEDs" rule is 
 ## Still to decide later
 
 - One big PCB (~37 × 37 cm) or ten smaller boards, one per row. One board is closer to the Nodo idea; smaller boards are cheaper and easier to replace.
-- Face method: two-tone acrylic (engrave away a black top layer) or a sandwich of clear acrylic plus a laser-cut black stencil. Two-tone is one sheet with no alignment step; the sandwich uses cheap, common sheets and can be replaced later.
-- Mounting: mirror-style screws through drilled holes (caps visible on the front) or glass-retaining clips mounted from the back (hidden from the front).
-- Octagon option: clip the four corners slightly. This moves the 4 corner minute LEDs inward, so both the face and frame SVG holes must move with them.
+- Mounting: concealed clips mounted from the back of the frame are preferred, so nothing shows on the front.
 - Which workshop can cut the 600 mm acrylic and MDF.
 - Final letter size on the faceplate, after seeing the sample letter.
 - Exact board size and connector positions, once the frame design is fixed.
