@@ -1,0 +1,20 @@
+[project]
+name = "60cm"
+version = "0.1.0"
+description = "Generate 60 cm wordclock templates from the 30 cm design"
+readme = "README.md"
+authors = [
+    { name = "TheGamingGod85", email = "the.gaming.god85@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+60cm = "_60cm:main"
+
+[tool.uv.build-backend]
+module-name = "_60cm"
+
+[build-system]
+requires = ["uv_build>=0.13.8,<0.14.0"]
+build-backend = "uv_build"
