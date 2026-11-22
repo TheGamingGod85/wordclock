@@ -12,6 +12,7 @@ Run `uv run 60cm` from this folder to regenerate every SVG. It writes into the f
 | `backup/` | The original stencil outlines, kept in case Allerta does not cut well. |
 | `preview/` | Layer-stack overlays and the font comparison image. Preview only — never cut these. |
 | `fonts/` | The Google Fonts used for the stencil and comparisons (OFL licensed). |
+| `electronics/` | `wordclock_60cm.fzz` circuit and its [wiring notes](electronics/README.md). |
 
 ## Files to cut
 
