@@ -58,7 +58,7 @@ The printed letter itself is about 13 mm font size: a capital is roughly 9 mm ta
 - Registration holes at (15, 300) and (585, 300) line the two face sheets up, outside the spacer inner cut line.
 - Corner LED holes are 12 mm across, so the dots scale with the rest of the clock.
 - Keep the 4 corner LEDs at the square corners, matching the existing frame and faceplate hole positions.
-- The counter pieces inside letters such as A, D, O, P, Q and R stay put once the stencil is clamped between the clear front and the diffuser. No bridges needed.
+- Counter pieces inside letters such as A, D, O, P, Q and R are loose and would fall to the bottom of the cut-out on a wall-mounted clock. Fix: use a stencil font with built-in bridges, or add bridges to the current outlines. `hardware/60cm/overlay_stencil_font_600.svg` shows the `STENCIL.TTF` option over the real layer stack.
 - Cutting needs a workshop with a large bed, or the frame must be split into panels that are glued together.
 - Keep the light wells and a diffuser sheet: with a cut stencil the LEDs would otherwise show as bright dots inside each letter.
 

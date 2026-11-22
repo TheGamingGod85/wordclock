@@ -7,7 +7,9 @@ authors = [
     { name = "TheGamingGod85", email = "the.gaming.god85@gmail.com" }
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "fonttools>=4.68.0",
+]
 
 [project.scripts]
 60cm = "_60cm:main"

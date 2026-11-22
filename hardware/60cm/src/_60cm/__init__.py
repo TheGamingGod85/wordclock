@@ -2,9 +2,13 @@
 
 from __future__ import annotations
 
+import re
 import shutil
 import xml.etree.ElementTree as ET
 from pathlib import Path
+
+from fontTools.pens.svgPathPen import SVGPathPen
+from fontTools.ttLib import TTFont
 
 REPO = Path(__file__).resolve().parents[4]
 SVG_NS = "{http://www.w3.org/2000/svg}"
@@ -186,7 +190,34 @@ def frame_files() -> None:
     )
 
 
-def overlay_file() -> None:
+def stencil_font_letter_paths() -> list[str]:
+    font_path = Path("C:/Windows/Fonts/STENCIL.TTF")
+    font = TTFont(font_path)
+    cmap = font.getBestCmap()
+    glyphs = font.getGlyphSet()
+    units = font["head"].unitsPerEm
+    source = REPO / "hardware" / "faceplate" / "glass-template-EN-font.svg"
+    root = ET.parse(source).getroot()
+    paths: list[str] = []
+    for text in root.iter(f"{SVG_NS}text"):
+        x, y = map(float, re.search(r"translate\(([\d.]+),([\d.]+)\)", text.attrib["transform"]).groups())
+        scale = 36 / units
+        advance = 0.0
+        for char in "".join(text.itertext()):
+            name = cmap.get(ord(char))
+            if name is None:
+                continue
+            pen = SVGPathPen(glyphs)
+            glyphs[name].draw(pen)
+            paths.append(
+                f'<path d="{pen.getCommands()}" transform="translate({num(x + advance)},{num(y)}) '
+                f'scale({num(scale)},{num(-scale)})"/>'
+            )
+            advance += font["hmtx"][name][0] * scale
+    return paths
+
+
+def overlay_file(name: str = "overlay_600.svg", letter_paths: list[str] | None = None) -> None:
     source = REPO / "hardware" / "faceplate" / "glass_template_EN_mirrored.svg"
     root = ET.parse(source).getroot()
     letters = [
@@ -233,8 +264,10 @@ def overlay_file() -> None:
     stencil = [shape_rect(0, 0, 600, 600)]
     stencil += [shape_circle(x, y, CORNER_R) for x, y in corners]
     stencil += reg
+    if letter_paths is None:
+        letter_paths = [f'<path d="{p.attrib["d"]}"/>' for p in letters]
     stencil.append(f'<g transform="matrix({num(a)},0,0,{num(d)},0,0)">')
-    stencil += [f'<path d="{p.attrib["d"]}"/>' for p in letters]
+    stencil += letter_paths
     stencil.append("</g>")
 
     clear = [shape_rect(0, 0, 600, 600)]
@@ -284,7 +317,7 @@ def overlay_file() -> None:
         + "\n".join(groups + legend)
         + "\n</svg>\n"
     )
-    (OUT / "overlay_600.svg").write_text(content, encoding="utf-8")
+    (OUT / name).write_text(content, encoding="utf-8")
 
 
 def main() -> None:
@@ -293,8 +326,9 @@ def main() -> None:
     count = face_files()
     frame_files()
     overlay_file()
+    overlay_file("overlay_stencil_font_600.svg", stencil_font_letter_paths())
     print(f"Archived 30 cm templates in {ARCHIVE.relative_to(REPO)}")
-    print(f"Generated {count} letter cut paths and 7 SVG files in {OUT.relative_to(REPO)}")
+    print(f"Generated {count} letter cut paths and 8 SVG files in {OUT.relative_to(REPO)}")
     for path in sorted(OUT.glob("*.svg")):
         print(f"  {path.name}: {path.stat().st_size} bytes")
 

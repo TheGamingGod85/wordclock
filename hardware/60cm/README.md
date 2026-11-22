@@ -14,6 +14,8 @@ Run `uv run 60cm` from this folder to regenerate every SVG. It uses only the Pyt
 | `frame_cut2_lightwells_600.svg` | 6 mm MDF | 110 wells: one per letter, scaled from the original hole. |
 | `frame_spacers_600.svg` | 6 mm MDF | One frame; cut as many layers as needed. |
 | `frame_back_600.svg` | back panel | Hatch and screw holes. |
+| `overlay_600.svg` | preview only | All six layers stacked; legend lists them front to back. |
+| `overlay_stencil_font_600.svg` | preview only | Same stack, but letters drawn with `STENCIL.TTF` (C:\Windows\Fonts) to compare bridges. Not a cut file. |
 
 All cut lines are red (`#ff0000`), fill none, 0.5 mm stroke. The sheets are 600 × 600 mm.
 
