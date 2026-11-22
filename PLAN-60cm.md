@@ -1,6 +1,8 @@
 # 60 cm Wordclock — Plan
 
-Status: planning only. No code or templates have been changed yet.
+Status: planning. Face and frame templates are generated in `hardware/60cm/`; the flat LED board and firmware changes are still to do.
+
+For the full explanation with diagrams, see the [60 cm Full Build Guide](README-60cm.md).
 
 ## Goal
 

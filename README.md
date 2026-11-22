@@ -1,6 +1,8 @@
 # Wordclock
 ESP32 based DIY wordclock project
 
+> **60 cm fork:** see the [60 cm Full Build Guide](README-60cm.md) for the enlarged two-LED-per-letter version, or the [short plan](PLAN-60cm.md) for the decision list.
+
 TL;DR: check out this :sparkles:[demo video](https://youtu.be/WF_X5soabm0) :sparkles:
 
 <br/>
