@@ -1,0 +1,77 @@
+
+(rules PCB freerouting.dsn
+  (snapAngle 
+    fortyfive_degree
+  )
+  (rule
+    (width 350.0)
+    (clearance 200.0)
+    (clearance 175.0 (type smd_to_turn_gap))
+    (clearance 50.0 (type smd))
+    (clearance 200.0 (type Power,Default))
+    (clearance 250.0 (type "board_edge"))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (padstack "Via[0-1]_1000:500_um"
+    (shape
+      (circle F.Cu 1000.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 1000.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_1000:500_um" "Via[0-1]_1000:500_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-Power,Default" "Via[0-1]_800:400_um" Power,Default
+  )
+  (via 
+    "Via[0-1]_1000:500_um-Power,Default" "Via[0-1]_1000:500_um" Power,Default
+  )
+  (viaRule
+    default "Via[0-1]_800:400_um"
+  )
+  (viaRule
+    default "Via[0-1]_800:400_um"
+  )
+  (viaRule
+    Power,Default "Via[0-1]_1000:500_um-Power,Default"
+  )
+  (class default
+    /N18 /N17 /N8 /N7 "/DATA_IN" /N5 /N4 /N12
+    /N11 /N9 /N6 /N13 "/DATA_OUT" /N21 /N20 /N14
+    /N3 /N2 /N19 /N16 /N10 /N1 /N15
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 350.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class Power,Default
+    +5V GND
+    (clearance_class Power,Default)
+    (via_rule Power,Default)
+    (rule
+      (width 1000.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
