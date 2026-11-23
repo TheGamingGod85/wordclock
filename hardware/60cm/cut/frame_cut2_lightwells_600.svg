@@ -118,4 +118,46 @@
 <rect x="385.772" y="453.8836" width="27.6" height="27.6" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
 <rect x="418.972" y="453.8836" width="27.6" height="27.6" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
 <rect x="452.172" y="453.8836" width="27.6" height="27.6" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
+
+<!-- Row PCB guide holes -->
+<circle cx="118.9720" cy="111.2410" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="111.2410" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="153.2410" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="153.2410" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="148.5124" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="148.5124" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="190.5124" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="190.5124" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="185.7838" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="185.7838" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="227.7838" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="227.7838" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="223.0552" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="223.0552" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="265.0552" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="265.0552" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="260.3266" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="260.3266" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="302.3266" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="302.3266" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="297.5980" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="297.5980" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="339.5980" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="339.5980" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="334.8694" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="334.8694" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="376.8694" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="376.8694" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="372.1408" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="372.1408" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="414.1408" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="414.1408" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="409.4122" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="409.4122" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="451.4122" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="451.4122" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="446.6836" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="446.6836" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="118.9720" cy="488.6836" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="480.9720" cy="488.6836" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
 </svg>
