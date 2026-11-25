@@ -24,10 +24,17 @@ FONTS = OUT / "fonts"
 ALLERTA = FONTS / "AllertaStencil-Regular.ttf"
 
 CUT_STYLE = "fill:none;stroke:#ff0000;stroke-width:0.5"
+HOLE_STYLE = "fill:none;stroke:#0000ff;stroke-width:0.5"
 REG_LEFT = 15.0
 REG_RIGHT = 585.0
 CORNER_R = 6.0
 WELL = 27.6
+HOLE_R = 1.6
+POWER_RAIL_X = 60.0
+POWER_RAIL_Y = 140.0
+POWER_RAIL_W = 50.0
+POWER_RAIL_H = 320.0
+POWER_RAIL_HOLE_INSET = 5.0
 
 
 def num(value: float) -> str:
@@ -43,6 +50,52 @@ def rect(x: float, y: float, w: float, h: float) -> str:
 
 def circle(cx: float, cy: float, r: float) -> str:
     return f'<circle cx="{num(cx)}" cy="{num(cy)}" r="{num(r)}" style="{CUT_STYLE}"/>'
+
+
+def hole_circle(cx: float, cy: float, r: float) -> str:
+    return f'<circle cx="{num(cx)}" cy="{num(cy)}" r="{num(r)}" style="{HOLE_STYLE}"/>'
+
+
+def power_rail_holes() -> list[tuple[float, float]]:
+    hx1 = POWER_RAIL_X + POWER_RAIL_HOLE_INSET
+    hx2 = POWER_RAIL_X + POWER_RAIL_W - POWER_RAIL_HOLE_INSET
+    hy1 = POWER_RAIL_Y + POWER_RAIL_HOLE_INSET
+    hy2 = POWER_RAIL_Y + POWER_RAIL_H - POWER_RAIL_HOLE_INSET
+    return [(hx1, hy1), (hx2, hy1), (hx1, hy2), (hx2, hy2)]
+
+
+def row_mounting_holes() -> list[tuple[float, float]]:
+    holes: list[tuple[float, float]] = []
+    for row in range(10):
+        top = 116.241 + row * 37.2714
+        holes.extend(
+            [
+                (118.972, top + 4.0),
+                (480.972, top + 4.0),
+                (118.972, top + 28.0),
+                (480.972, top + 28.0),
+            ]
+        )
+    return holes
+
+
+def corner_mounting_holes() -> list[tuple[float, float]]:
+    # 30x30 mm corner boards grown inward, holes 5 mm inset on board diagonals.
+    # Diagonal pair is chosen to clear the r=6 corner light-well cutout.
+    return [
+        (55.06, 35.05),
+        (35.06, 55.05),
+        (544.94, 35.05),
+        (564.94, 55.05),
+        (35.06, 544.95),
+        (55.06, 564.95),
+        (564.94, 544.95),
+        (544.94, 564.95),
+    ]
+
+
+def all_mounting_holes() -> list[tuple[float, float]]:
+    return row_mounting_holes() + corner_mounting_holes() + power_rail_holes()
 
 
 def shape_rect(x: float, y: float, w: float, h: float) -> str:
@@ -103,7 +156,10 @@ def face_files() -> int:
         circle(REG_RIGHT, 300, 2),
     ]
     (CUT / "faceplate_clear_600.svg").write_text(
-        svg("Clear front sheet: cut from 600 x 600 mm cast acrylic.", common),
+        svg(
+            "Clear front sheet: solid 600 x 600 mm cast acrylic, no cutouts.",
+            [rect(0, 0, 600, 600)],
+        ),
         encoding="utf-8",
     )
 
@@ -143,6 +199,8 @@ def frame_files() -> None:
                 rect(200, 500, 200, 100),
                 circle(REG_LEFT, 300, 2),
                 circle(REG_RIGHT, 300, 2),
+                "<!-- PCB standoff mounting holes: M3 clearance r=1.6mm. Row boards 370x32mm, corner boards 30x30mm, power rail 50x320mm. -->",
+                *[hole_circle(x, y, HOLE_R) for x, y in all_mounting_holes()],
             ],
         ),
         encoding="utf-8",
@@ -200,9 +258,52 @@ def frame_files() -> None:
                 circle(575, 575, 3),
                 circle(REG_LEFT, 300, 2),
                 circle(REG_RIGHT, 300, 2),
+                "<!-- PCB standoff mounting holes: M3 clearance r=1.6mm. Row boards 370x32mm, corner boards 30x30mm, power rail 50x320mm. -->",
+                *[hole_circle(x, y, HOLE_R) for x, y in all_mounting_holes()],
             ],
         ),
         encoding="utf-8",
+    )
+
+
+def overlay_power_rail_file(name: str = "overlay_power_rail_600.svg") -> None:
+    base = (PREVIEW / "overlay_600.svg").read_text(encoding="utf-8")
+    extra = [
+        '<g id="pcb_mounting_holes" stroke="#0000ff" fill="none" stroke-width="0.6">',
+        *[shape_circle(x, y, HOLE_R) for x, y in all_mounting_holes()],
+        "</g>",
+        '<g id="row_pcb_outlines" stroke="#d62728" fill="none" stroke-width="0.8">',
+        *[
+            shape_rect(114.972, 116.241 + row * 37.2714, 370.0, 32.0)
+            for row in range(10)
+        ],
+        "</g>",
+        '<g id="corner_pcb_outlines" stroke="#8c564b" fill="none" stroke-width="0.8">',
+        *[
+            shape_rect(x, y, 30.0, 30.0)
+            for x, y in (
+                (30.06, 30.05),
+                (539.94, 30.05),
+                (30.06, 539.95),
+                (539.94, 539.95),
+            )
+        ],
+        "</g>",
+        '<g id="power_rail_pcb" stroke="#e377c2" fill="none" stroke-width="0.8">',
+        shape_rect(POWER_RAIL_X, POWER_RAIL_Y, POWER_RAIL_W, POWER_RAIL_H),
+        *[shape_circle(x, y, HOLE_R) for x, y in power_rail_holes()],
+        "</g>",
+        '<line x1="620" y1="300" x2="650" y2="300" stroke="#0000ff" stroke-width="3"/>',
+        '<text x="660" y="304" font-family="sans-serif" font-size="12" fill="#111">PCB mounting holes</text>',
+        '<line x1="620" y1="324" x2="650" y2="324" stroke="#d62728" stroke-width="3"/>',
+        '<text x="660" y="328" font-family="sans-serif" font-size="12" fill="#111">Row PCB outlines</text>',
+        '<line x1="620" y1="348" x2="650" y2="348" stroke="#8c564b" stroke-width="3"/>',
+        '<text x="660" y="352" font-family="sans-serif" font-size="12" fill="#111">Corner PCB outlines</text>',
+        '<line x1="620" y1="372" x2="650" y2="372" stroke="#e377c2" stroke-width="3"/>',
+        '<text x="660" y="376" font-family="sans-serif" font-size="12" fill="#111">Power rail PCB</text>',
+    ]
+    (PREVIEW / name).write_text(
+        base.replace("</svg>", "\n".join(extra) + "\n</svg>"), encoding="utf-8"
     )
 
 
@@ -290,8 +391,6 @@ def overlay_file(name: str = "overlay_600.svg", letter_paths: list[str] | None =
     stencil.append("</g>")
 
     clear = [shape_rect(0, 0, 600, 600)]
-    clear += [shape_circle(x, y, CORNER_R) for x, y in corners]
-    clear += reg
 
     groups = [
         group("back_panel", "#777777", back),
@@ -346,6 +445,7 @@ def main() -> None:
     count = face_files()
     frame_files()
     overlay_file("overlay_600.svg", stencil_font_letter_paths(ALLERTA))
+    overlay_power_rail_file()
     overlay_file("overlay_original_stencil_600.svg")
     overlay_file("overlay_stencil_font_600.svg", stencil_font_letter_paths(Path("C:/Windows/Fonts/STENCIL.TTF")))
     for font_file in sorted(FONTS.glob("*.ttf")):

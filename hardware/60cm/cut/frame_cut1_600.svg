@@ -5,8 +5,7 @@
 <rect x="200" y="500" width="200" height="100" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
 <circle cx="15" cy="300" r="2" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
 <circle cx="585" cy="300" r="2" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
-
-<!-- PCB standoff mounting holes: M3 clearance r=1.6mm, for back panel/cut1 standoffs. Row boards 370x32mm, 4 holes each; corner boards assumed 20x20mm, 2 holes each. Verify corner hole positions against corner PCB design before fabrication. -->
+<!-- PCB standoff mounting holes: M3 clearance r=1.6mm. Row boards 370x32mm, corner boards 30x30mm, power rail 50x320mm. -->
 <circle cx="118.972" cy="120.241" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
 <circle cx="480.972" cy="120.241" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
 <circle cx="118.972" cy="144.241" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
@@ -47,12 +46,16 @@
 <circle cx="480.972" cy="455.6836" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
 <circle cx="118.972" cy="479.6836" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
 <circle cx="480.972" cy="479.6836" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
-<circle cx="33.06" cy="40.05" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
-<circle cx="47.06" cy="40.05" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
-<circle cx="552.94" cy="40.05" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
-<circle cx="566.94" cy="40.05" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
-<circle cx="33.06" cy="559.95" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
-<circle cx="47.06" cy="559.95" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
-<circle cx="552.94" cy="559.95" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
-<circle cx="566.94" cy="559.95" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="55.06" cy="35.05" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="35.06" cy="55.05" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="544.94" cy="35.05" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="564.94" cy="55.05" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="35.06" cy="544.95" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="55.06" cy="564.95" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="564.94" cy="544.95" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="544.94" cy="564.95" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="65" cy="145" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="105" cy="145" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="65" cy="455" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
+<circle cx="105" cy="455" r="1.6" style="fill:none;stroke:#0000ff;stroke-width:0.5"/>
 </svg>

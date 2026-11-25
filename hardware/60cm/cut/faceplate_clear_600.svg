@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="600mm" height="600mm" viewBox="0 0 600 600">
-<!-- Clear front sheet: cut from 600 x 600 mm cast acrylic. -->
+<!-- Clear front sheet: solid 600 x 600 mm cast acrylic, no cutouts. -->
 <rect x="0" y="0" width="600" height="600" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
-<circle cx="40.06" cy="40.05" r="6" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
-<circle cx="559.94" cy="40.05" r="6" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
-<circle cx="40.06" cy="559.95" r="6" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
-<circle cx="559.94" cy="559.95" r="6" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
-<circle cx="15" cy="300" r="2" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
-<circle cx="585" cy="300" r="2" style="fill:none;stroke:#ff0000;stroke-width:0.5"/>
 </svg>
