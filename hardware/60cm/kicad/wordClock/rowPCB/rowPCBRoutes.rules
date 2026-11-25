@@ -5,9 +5,10 @@
   )
   (rule
     (width 250.0)
-    (clearance 200.0)
+    (clearance 150.0)
     (clearance 125.0 (type smd_to_turn_gap))
-    (clearance 50.0 (type smd))
+    (clearance 37.6 (type smd))
+    (clearance 150.0 (type POWER,Default))
     (clearance 250.0 (type "board_edge"))
   )
   (padstack "Via[0-1]_600:300_um"
@@ -19,24 +20,70 @@
     )
     (attach off)
   )
+  (padstack "Via[0-1]_700:400_um"
+    (shape
+      (circle F.Cu 700.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 700.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (padstack "Via[0-1]_600:400_um"
+    (shape
+      (circle F.Cu 600.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 600.0 0.0 0.0)
+    )
+    (attach off)
+  )
   (via 
     "Via[0-1]_600:300_um" "Via[0-1]_600:300_um" default
   )
+  (via 
+    "Via[0-1]_700:400_um" "Via[0-1]_700:400_um" default
+  )
+  (via 
+    "Via[0-1]_600:400_um" "Via[0-1]_600:400_um" default
+  )
+  (via 
+    "Via[0-1]_600:300_um-POWER,Default" "Via[0-1]_600:300_um" POWER,Default
+  )
+  (via 
+    "Via[0-1]_700:400_um-POWER,Default" "Via[0-1]_700:400_um" POWER,Default
+  )
+  (via 
+    "Via[0-1]_600:400_um-POWER,Default" "Via[0-1]_600:400_um" POWER,Default
+  )
   (viaRule
     default "Via[0-1]_600:300_um"
   )
   (viaRule
     default "Via[0-1]_600:300_um"
+  )
+  (viaRule
+    POWER,Default "Via[0-1]_700:400_um-POWER,Default"
   )
   (class default
-    /+5V /N16 /GND /N15 /N4 /N3 /N1 /DIN
-    /N2 /N13 /N12 /N6 /N5 /N8 /N7 /N19
-    /N18 /N11 /N17 /N20 /DOUT /N9 /N14 /N21
-    /N10
+    /N16 /N15 /N4 /N3 /N1 /DIN /N2 /N13
+    /N12 /N6 /N5 /N8 /N7 /N19 /N18 /N11
+    /N17 /N20 /DOUT /N9 /N14 /N21 /N10
     (clearance_class default)
     (via_rule default)
     (rule
       (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class POWER,Default
+    /+5V /GND
+    (clearance_class POWER,Default)
+    (via_rule POWER,Default)
+    (rule
+      (width 1200.0)
     )
     (circuit 
       (use_layer F.Cu B.Cu)

@@ -41,9 +41,9 @@ Current active board: **LED row** — see `ROW_PCB_BUILD_GUIDE.md`.
 5 V / 20 A PSU
   -> 15 A blade fuse (main)
   -> POWER RAIL (50 x 320 mm)
-       -> Output 1..10: 2 A mini blade fuse -> row 1..10
-       -> Output 11:    1 A mini blade fuse -> corner 1 -> 2 -> 3 -> 4
-       -> Output 12:    1 A mini blade fuse -> controller board
+       -> Output 1:     1 A mini blade fuse -> corner 1 -> 2 -> 3 -> 4 (top, terminal up)
+       -> Output 2..11: 2 A mini blade fuse -> row 1..10 (grouped middle)
+       -> Output 12:    1 A mini blade fuse -> controller board (bottom)
 ```
 
 Rules:
@@ -88,15 +88,16 @@ Important:
 
 ### 5.2 Rail outputs and controller power input
 
-- **2-pin 5.08 mm screw terminals**, footprint `TerminalBlock_Generic:Screw_Terminal_01x02`.
+- **2-pin 3.50 mm screw terminals**, same footprint as row `J2`: `TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal`.
 - 10 row outputs are spaced to fit inside the 320 mm rail; they do **not** need to match the 37.2714 mm row pitch.
-- Controller power input uses 2-pin 5.08 mm from rail output 12.
+- Controller power input uses a 2-pin 3.50 mm screw terminal from rail output 12.
 
 ### 5.3 Main input
 
-- Main input uses the same generic screw terminal footprint as the outputs: `TerminalBlock_Generic:Screw_Terminal_01x02`.
-- User decision 2026-11-24: no XT60. On 2026-11-25 the user said XT60 is acceptable if height allows; keep the screw-terminal footprint for now and decide on XT60 only if the future rail layout needs it.
-- Current rating / wire gauge still needs a sanity check before fabrication.
+- Main input uses the same 4-pin footprint as row `J1`: `TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x04_P3.50mm_Horizontal`.
+- Pins 1/2 are both `+5V_IN`; pins 3/4 are both `GND`. Use two separate PSU wires per rail because one 3.50 mm pole is only ~8 A.
+- User decision 2026-11-24: no XT60. On 2026-11-25 the user said XT60 is acceptable if height allows; keep the 4Ucon footprint and decide on XT60 only if the future rail layout needs it.
+- See `POWER_RAIL_BUILD_GUIDE.md` for the full rail build.
 
 ### 5.4 Fuses
 
@@ -156,10 +157,10 @@ Important:
 - Centre-fed 5 V input to halve worst-case path.
 - 15 A main blade fuse between PSU and rail.
 - ~1000 µF electrolytic at input.
-- 12 fused outputs:
-  - 10 × 2 A mini blade for rows, at 32 mm pitch
-  - 1 × 1 A mini blade for corner chain
-  - 1 × 1 A mini blade for controller
+- 12 fused outputs in physical order:
+  - 1 × 1 A mini blade for corner chain, first at the top (`J12`, terminal rotation 0°, wire up)
+  - 10 × 2 A mini blade for rows, grouped in the middle (`J2`…`J11`)
+  - 1 × 1 A mini blade for controller, last at the bottom (`J13`)
 - Silkscreen each terminal (5V, GND, board number) and fuse rating.
 
 ### 6.4 Controller — protoboard, not a fabricated PCB
@@ -172,7 +173,7 @@ Important:
 - RTC: **DS3231 module** with coin-cell backup, on its own I2C headers.
 - Level shifter: 74AHCT125 powered from 5 V. ESP32 3.3 V logic into it; WS2812B needs ~3.5 V high on a 5 V supply.
 - 330 Ω series resistor close to the output terminal.
-- Power input: 2-pin 5.08 mm screw terminal from rail output 12.
+- Power input: 2-pin 3.50 mm screw terminal from rail output 12.
 - Data output: 2-pin 3.5 mm screw terminal `DOUT, GND` to row 1.
 - Decoupling: 100 nF near level shifter and ESP32, plus bulk on 5 V input.
 - All grounds are one net.
@@ -205,9 +206,9 @@ Important:
 
 1. Exact 30-pin ESP32 dev module model/dimensions — decide when the protoboard controller is built.
 2. Exact DS3231 module footprint/header layout — module family confirmed, footprint still to pick.
-3. Confirm current rating of generic `Screw_Terminal_01x02` for the ~13 A main input; footprint choice is already fixed.
-4. Specific PCB-mount mini blade ATM/APM fuse holder part number + datasheet footprint.
-5. Specific 15 A blade fuse holder part number + datasheet footprint.
+3. Dry-fit the 4-pin 4Ucon/DORABO input terminal; its two poles per rail must share the ~13 A feed.
+4. Resolved for rail: XFCN `XF-508P-B-B` (LCSC `C19727305`) on stock `Fuse:Fuseholder_Blade_Mini_Keystone_3568`; dry-fit once.
+5. Resolved for rail: same 15 A-rated holder for `F1`; buy 15 A / 2 A / 1 A mini blade fuses separately.
 6. Rail copper weight: design at 1 oz, upgrade to 2 oz only if quote justifies it.
 7. Resolved for rows: SMD 470 µF / 10 V / 105 °C, 8 × 10.5 mm (`Capacitor_SMD:CP_Elec_8x10.5`), e.g. Panasonic FK `EEE-FK1A471P`. Corner still TBD.
 8. Final KiCad project structure — user creates it; do not create or edit old project.
@@ -231,7 +232,7 @@ These are the standalone step-by-step files. Create them one at a time; do not s
 |---|---|---|
 | Main 22-LED row PCB | `ROW_PCB_BUILD_GUIDE.md` | Created 2026-11-25 |
 | Corner PCB | `CORNER_PCB_BUILD_GUIDE.md` | Not created yet |
-| Power distribution / rail | `POWER_RAIL_BUILD_GUIDE.md` | Not created yet; old project deleted |
+| Power distribution / rail | `POWER_RAIL_BUILD_GUIDE.md` | Created 2026-11-25 |
 | Controller protoboard | `CONTROLLER_PROTOBOARD_GUIDE.md` | Not created yet |
 
 `ROW_PCB_BUILD_GUIDE.md` contains the Mermaid wiring diagrams, cable labels, connector pinout, all component references with X/Y coordinates, and the KiCad schematic/PCB/assembly steps for one row board. Treat LED centres, M3 holes, and terminal pin order as fixed; capacitor and connector positions may move only to fit the exact purchased footprint.
