@@ -1,0 +1,60 @@
+
+(rules PCB freerouting.dsn
+  (snapAngle 
+    fortyfive_degree
+  )
+  (rule
+    (width 250.0)
+    (clearance 150.0)
+    (clearance 125.0 (type smd_to_turn_gap))
+    (clearance 37.6 (type smd))
+    (clearance 150.0 (type "CORNER_PWR,Default"))
+    (clearance 250.0 (type "board_edge"))
+  )
+  (padstack "Via[0-1]_700:400_um"
+    (shape
+      (circle F.Cu 700.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 700.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_700:400_um" "Via[0-1]_700:400_um" default
+  )
+  (via 
+    "Via[0-1]_700:400_um-CORNER_PWR,Default" "Via[0-1]_700:400_um" "CORNER_PWR,Default"
+  )
+  (viaRule
+    default "Via[0-1]_700:400_um"
+  )
+  (viaRule
+    default "Via[0-1]_700:400_um"
+  )
+  (viaRule
+    "CORNER_PWR,Default" "Via[0-1]_700:400_um-CORNER_PWR,Default"
+  )
+  (class default
+    /GND /DIN /DOUT
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "CORNER_PWR,Default"
+    "/+5V_CORNER"
+    (clearance_class "CORNER_PWR,Default")
+    (via_rule "CORNER_PWR,Default")
+    (rule
+      (width 1000.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)

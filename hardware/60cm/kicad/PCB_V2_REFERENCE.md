@@ -10,7 +10,7 @@
 - Do **not** modify `hardware/60cm/kicad/word_clock_row/`.
 - That project is **v1** and is obsolete for power topology. The user has deleted it; do not restore it.
 - The old `power_rail_v2` project was also deleted by the user on 2026-11-25. Do not recreate it until asked.
-- Current build order: **main 22-LED row PCB first**, then corner PCB, then power distribution, then controller protoboard wiring.
+- Current build order: **main 22-LED row PCB first**, then corner PCB, then power distribution, then controller PCB.
 
 ## 1. What v2 changes from v1
 
@@ -29,8 +29,8 @@ v1 row board had daisy-chained power through 3-pin JST-XH connectors and provisi
 |---|---:|---|---|
 | LED row | 10 | 370 × 32 mm | 22 WS2812B each = 220 LEDs |
 | Corner | 4 | 30 × 30 mm max | 1 WS2812B each = 4 LEDs |
-| Power rail | 1, deferred | 50 × 320 mm | Fused star distribution; project deleted, restart later |
-| Controller | 1 | Protoboard, not fabricated | ESP32 + DS3231 + level shifter on protoboard |
+| Power rail | 1 | 50 × 320 mm | Fused star distribution; see `POWER_RAIL_BUILD_GUIDE.md` |
+| Controller | 1 | 190 × 90 mm PCB | ESP32 + DS3231 + 74AHCT125; fits 200 × 100 mm cavity |
 
 Total LEDs: **224**.  
 Current active board: **LED row** — see `ROW_PCB_BUILD_GUIDE.md`.
@@ -82,7 +82,7 @@ Important:
   - Row left: 4-pin `TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x04_P3.50mm_Horizontal` = `5V, GND, DIN, GND`.
   - Row right: 2-pin `TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal` = `DOUT, GND`.
   - Reason: the 5.00 mm 4-pin body is ~21 mm long and overlaps the locked left M3 holes; the 3.50 mm body is ~15.7 mm and fits.
-- Corner boards: still planned as 4-pin in / 4-pin out; exact part decided in the corner guide.
+- Corner boards: 4-pin in / 4-pin out using the same 3.50 mm 4Ucon footprint as row `J1`; see `CORNER_PCB_BUILD_GUIDE.md`.
 - Controller data output: 2-pin = `DOUT, GND`; match row/corner input series.
 - No XT60 on row boards: four conductors are needed and row current is only ~1.3 A.
 
@@ -131,6 +131,8 @@ Important:
 
 ### 6.2 Corner board — 4×, 30 × 30 mm max
 
+- Full connector pinout, BOM, one-board coordinates, wiring, DRC and export steps: **see `CORNER_PCB_BUILD_GUIDE.md`**.
+- One PCB design is used at all four corners; rotate the finished board 0° / 90° / 270° / 180° as listed in the guide. Do not mirror or flip it.
 - Mechanical envelope is already set: **30 × 30 mm grown inward** from the old 20 × 20 position.
 - Top-left envelope: `x=30.06…60.06`, `y=30.05…60.05`.
 - Top-right envelope: `x=539.94…569.94`, `y=30.05…60.05`.
@@ -139,7 +141,7 @@ Important:
 - Two 4-pin 3.5 mm terminals are ~14 mm each and fit on opposite edges.
 - 1 × WS2812B + 1 × 100 nF.
 - Power and data both chain through each board.
-- 470 µF optional; only needed once at corner 1 if desired.
+- 100 nF only; 470 µF skipped because the four LEDs draw about 0.25 A worst case.
 - Last board right terminal stays empty.
 - Current diagonal M3 holes, 5 mm inset, clear of the Ø12 corner light-well:
   - Top-left: `(55.06,35.05)`, `(35.06,55.05)`
@@ -163,19 +165,24 @@ Important:
   - 1 × 1 A mini blade for controller, last at the bottom (`J13`)
 - Silkscreen each terminal (5V, GND, board number) and fuse rating.
 
-### 6.4 Controller — protoboard, not a fabricated PCB
+### 6.4 Controller PCB — 190 × 90 mm
 
-- User decision 2026-11-25: controller will be built on protoboard. Do **not** design a controller PCB.
-- Use a 30-pin ESP32 dev module on female headers; exact module decided when the protoboard is built.
-- Use the dev module's onboard regulator. Feed 5 V into its **5V/VIN** pin. Never feed 5 V to 3.3 V.
+- Full parts list, netlist, ESP32 footprint rule, coordinates, keepout, DRC and export steps: **see `CONTROLLER_PCB_BUILD_GUIDE.md`**.
+- User decision 2026-11-26 replaces the earlier protoboard decision: the controller is now a fabricated PCB.
+- Board outline **190 × 90 mm**, placed at `x=205…395`, `y=505…595` inside the 200 × 100 mm cavity.
+- 30-pin ESP32 DevKit (CH340C, USB-C): use generic `Conn_02x15_Odd_Even` symbol with the pad map in `CONTROLLER_PCB_BUILD_GUIDE.md`, and a custom footprint; measure row spacing and print 1:1 before ordering.
+- DS3231 module: use generic `Conn_01x04`/`Conn_01x06` symbol plus matching pin-header footprint; wire from the actual module silkscreen.
+- Feed 5 V to ESP32 **VIN** through a 1N5819 diode. Never feed 5 V to `3V3` or any GPIO.
 - USB is for programming only.
-- Keep the protoboard inside the frame cavity `x=200…500`, `y=500…600` (200 × 100 mm).
-- RTC: **DS3231 module** with coin-cell backup, on its own I2C headers.
-- Level shifter: 74AHCT125 powered from 5 V. ESP32 3.3 V logic into it; WS2812B needs ~3.5 V high on a 5 V supply.
-- 330 Ω series resistor close to the output terminal.
-- Power input: 2-pin 3.50 mm screw terminal from rail output 12.
-- Data output: 2-pin 3.5 mm screw terminal `DOUT, GND` to row 1.
-- Decoupling: 100 nF near level shifter and ESP32, plus bulk on 5 V input.
+- RTC: **DS3231 module** on ESP32 3.3 V; module has its own I²C pull-ups.
+- SMD where practical: 74AHCT125 in SOIC-14, 1N5819 in SOD-123, 330 Ω / 10 kΩ resistors in 0805, 100 nF in 0805, 100 µF as SMD electrolytic. ESP32, DS3231 module, screw terminals and LDR stay THT/modules.
+- Level shifter: 74AHCT125 powered from 5 V **before** the diode. ESP32 3.3 V logic into it; WS2812B needs ~3.5 V high on a 5 V supply.
+- Data: ESP32 `D18` → U2 → 330 Ω → J2 → row 1 DIN. I²C: `D21`/`D22`.
+- Ambient light sensor restored from the original 30 cm design: LDR1 from ESP32 `3V3` to `D33` (ADC1), with a 10 kΩ pulldown to GND. Firmware default `LDR_PIN` is already 33; sensitivity setting handles auto-dim.
+- Antenna keepout on both layers at local `(80,80)`–`(110,90)` unless the antenna overhangs the board edge.
+- Power input: 2-pin 3.50 mm 4Ucon screw terminal from rail output 12.
+- Data output: 2-pin 3.50 mm 4Ucon screw terminal `DATA_OUT, GND` to row 1.
+- Decoupling: 100 nF at U2 pins 14/7, 100 nF + 100 µF after the diode near ESP32 VIN.
 - All grounds are one net.
 
 ## 7. Mechanical / cut-layer coordination
@@ -194,8 +201,8 @@ Important:
 ## 8. Manufacturing / ordering notes
 
 - Budget: ₹5–8k, up to ₹10k if PCBA included.
-- Current build order: 10 row PCBs first; corner and rail later. Rail project was deleted and must be restarted from scratch when needed.
-- Controller is protoboard, not an ordered PCB.
+- Row PCB and power rail are routed and exported; corner PCB is next; controller PCB is last.
+- Controller is a fabricated 190 × 90 mm PCB. Order one locally, or 5 if using JLCPCB.
 - JLCPCB minimum 5 pcs per design.
 - Row board is SMT-friendly: all parts are SMD except the two screw terminals. Hand assembly or low-cost SMT assembly both work.
 - Indian per-cm² shops may be cheaper for the single rail board.
@@ -204,13 +211,13 @@ Important:
 
 ## 9. Open items / decisions still needed
 
-1. Exact 30-pin ESP32 dev module model/dimensions — decide when the protoboard controller is built.
-2. Exact DS3231 module footprint/header layout — module family confirmed, footprint still to pick.
+1. ESP32 symbol/footprint workaround is resolved: generic 2×15 connector symbol + custom footprint with pad map; row spacing must still be measured and 1:1 test-fitted; see `CONTROLLER_PCB_BUILD_GUIDE.md`.
+2. DS3231 module footprint/header layout — module family confirmed; match the actual header when the module arrives.
 3. Dry-fit the 4-pin 4Ucon/DORABO input terminal; its two poles per rail must share the ~13 A feed.
 4. Resolved for rail: XFCN `XF-508P-B-B` (LCSC `C19727305`) on stock `Fuse:Fuseholder_Blade_Mini_Keystone_3568`; dry-fit once.
 5. Resolved for rail: same 15 A-rated holder for `F1`; buy 15 A / 2 A / 1 A mini blade fuses separately.
 6. Rail copper weight: design at 1 oz, upgrade to 2 oz only if quote justifies it.
-7. Resolved for rows: SMD 470 µF / 10 V / 105 °C, 8 × 10.5 mm (`Capacitor_SMD:CP_Elec_8x10.5`), e.g. Panasonic FK `EEE-FK1A471P`. Corner still TBD.
+7. Resolved for rows: SMD 470 µF / 10 V / 105 °C, 8 × 10.5 mm (`Capacitor_SMD:CP_Elec_8x10.5`), e.g. Panasonic FK `EEE-FK1A471P`. Resolved for corners: 100 nF only, no 470 µF.
 8. Final KiCad project structure — user creates it; do not create or edit old project.
 
 ## 10. Hard rules to remember
@@ -231,8 +238,8 @@ These are the standalone step-by-step files. Create them one at a time; do not s
 | Board | Guide | Status |
 |---|---|---|
 | Main 22-LED row PCB | `ROW_PCB_BUILD_GUIDE.md` | Created 2026-11-25 |
-| Corner PCB | `CORNER_PCB_BUILD_GUIDE.md` | Not created yet |
+| Corner PCB | `CORNER_PCB_BUILD_GUIDE.md` | Created 2026-11-25 |
 | Power distribution / rail | `POWER_RAIL_BUILD_GUIDE.md` | Created 2026-11-25 |
-| Controller protoboard | `CONTROLLER_PROTOBOARD_GUIDE.md` | Not created yet |
+| Controller PCB | `CONTROLLER_PCB_BUILD_GUIDE.md` | Created 2026-11-26 |
 
 `ROW_PCB_BUILD_GUIDE.md` contains the Mermaid wiring diagrams, cable labels, connector pinout, all component references with X/Y coordinates, and the KiCad schematic/PCB/assembly steps for one row board. Treat LED centres, M3 holes, and terminal pin order as fixed; capacitor and connector positions may move only to fit the exact purchased footprint.

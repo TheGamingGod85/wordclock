@@ -1,0 +1,89 @@
+(session freerouting.ses
+  (base_design freerouting.dsn)
+  (placement
+    (resolution um 10)
+    (component "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x04_P3.50mm_Horizontal"
+      (place J1 295000 -230000 front 90)
+      (place J2 115000 -300000 front 0)
+    )
+    (component "Capacitor_SMD:C_0805_2012Metric"
+      (place C1 175500 -100000 front 0)
+    )
+    (component "LED_SMD:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm"
+      (place D1 100000 -100000 front 0)
+    )
+    (component "MountingHole:MountingHole_3.2mm_M3"
+      (place H1 250000 -50000 front 90)
+      (place H2 50000 -250000 front 0)
+    )
+  )
+  (was_is
+  )
+  (routes 
+    (resolution um 10)
+    (parser
+      (host_cad "KiCad's Pcbnew")
+      (host_version "10.0.8")
+    )
+    (library_out 
+      (padstack "Via[0-1]_700:400_um"
+        (shape
+          (circle F.Cu 7000 0 0)
+        )
+        (shape
+          (circle B.Cu 7000 0 0)
+        )
+        (attach off)
+      )
+    )
+    (network_out 
+      (net "/GND"
+        (wire
+          (path F.Cu 2500
+            185000 -100000
+            185000 -115388
+            182482 -117906
+          )
+        )
+        (via "Via[0-1]_700:400_um" 182482 -117906
+        )
+        (wire
+          (path F.Cu 2500
+            143166 -112357
+            128643 -112357
+            124500 -116500
+          )
+        )
+        (via "Via[0-1]_700:400_um" 143166 -112357
+        )
+      )
+      (net "/DIN"
+        (wire
+          (path F.Cu 2500
+            124500 -83500
+            201000 -160000
+            295000 -160000
+          )
+        )
+      )
+      (net "/DOUT"
+        (wire
+          (path F.Cu 2500
+            104033 -112357
+            79643 -112357
+            75500 -116500
+          )
+        )
+        (via "Via[0-1]_700:400_um" 104033 -112357
+        )
+        (wire
+          (path B.Cu 2500
+            185000 -300000
+            104033 -219033
+            104033 -112357
+          )
+        )
+      )
+    )
+  )
+)

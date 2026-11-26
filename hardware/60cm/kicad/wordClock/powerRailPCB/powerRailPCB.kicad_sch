@@ -924,44 +924,44 @@
 		)
 	)
 	(junction
-		(at 43.18 73.66)
+		(at 39.37 133.35)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "37b0a2a4-c315-4ec9-a943-541347785049")
 	)
 	(junction
-		(at 43.18 93.98)
+		(at 44.45 151.13)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "426d02bb-6600-48b3-a24d-2c1c5f5e93d6")
 	)
 	(junction
-		(at 36.83 73.66)
+		(at 33.02 133.35)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4e2cd215-d44b-4383-bf41-b3611714a945")
 	)
 	(junction
-		(at 43.18 78.74)
+		(at 39.37 138.43)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9e1b1001-6b5b-46d2-95ab-273eedcb3439")
 	)
 	(junction
-		(at 36.83 78.74)
+		(at 33.02 138.43)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b7053c4f-fa41-4e09-ad16-01133189b7a8")
 	)
 	(junction
-		(at 45.72 101.6)
+		(at 46.99 158.75)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c2662990-2143-4108-b343-360e0f57731e")
 	)
 	(wire
 		(pts
-			(xy 36.83 73.66) (xy 31.75 73.66)
+			(xy 33.02 133.35) (xy 27.94 133.35)
 		)
 		(stroke
 			(width 0)
@@ -971,7 +971,7 @@
 	)
 	(wire
 		(pts
-			(xy 38.1 93.98) (xy 43.18 93.98)
+			(xy 39.37 151.13) (xy 44.45 151.13)
 		)
 		(stroke
 			(width 0)
@@ -981,7 +981,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 78.74) (xy 36.83 78.74)
+			(xy 39.37 138.43) (xy 33.02 138.43)
 		)
 		(stroke
 			(width 0)
@@ -991,7 +991,7 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 81.28) (xy 73.66 80.01)
+			(xy 69.85 140.97) (xy 69.85 139.7)
 		)
 		(stroke
 			(width 0)
@@ -1001,7 +1001,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 73.66) (xy 36.83 73.66)
+			(xy 39.37 133.35) (xy 33.02 133.35)
 		)
 		(stroke
 			(width 0)
@@ -1011,7 +1011,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 78.74) (xy 31.75 78.74)
+			(xy 33.02 138.43) (xy 27.94 138.43)
 		)
 		(stroke
 			(width 0)
@@ -1021,7 +1021,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 101.6) (xy 52.07 101.6)
+			(xy 46.99 158.75) (xy 53.34 158.75)
 		)
 		(stroke
 			(width 0)
@@ -1031,7 +1031,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 77.47) (xy 43.18 78.74)
+			(xy 39.37 137.16) (xy 39.37 138.43)
 		)
 		(stroke
 			(width 0)
@@ -1041,7 +1041,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 101.6) (xy 45.72 104.14)
+			(xy 46.99 158.75) (xy 46.99 161.29)
 		)
 		(stroke
 			(width 0)
@@ -1051,7 +1051,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 93.98) (xy 43.18 92.71)
+			(xy 44.45 151.13) (xy 44.45 149.86)
 		)
 		(stroke
 			(width 0)
@@ -1061,7 +1061,7 @@
 	)
 	(wire
 		(pts
-			(xy 38.1 101.6) (xy 45.72 101.6)
+			(xy 39.37 158.75) (xy 46.99 158.75)
 		)
 		(stroke
 			(width 0)
@@ -1071,7 +1071,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 72.39) (xy 43.18 73.66)
+			(xy 39.37 132.08) (xy 39.37 133.35)
 		)
 		(stroke
 			(width 0)
@@ -1081,7 +1081,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 73.66) (xy 43.18 74.93)
+			(xy 39.37 133.35) (xy 39.37 134.62)
 		)
 		(stroke
 			(width 0)
@@ -1091,7 +1091,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 93.98) (xy 52.07 93.98)
+			(xy 44.45 151.13) (xy 53.34 151.13)
 		)
 		(stroke
 			(width 0)
@@ -1101,7 +1101,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 78.74) (xy 43.18 80.01)
+			(xy 39.37 138.43) (xy 39.37 139.7)
 		)
 		(stroke
 			(width 0)
@@ -1130,7 +1130,7 @@
 		(uuid "06425e36-e4f7-4b31-bd3d-c501313d17c0")
 	)
 	(label "+5V_MAIN"
-		(at 156.21 104.14 180)
+		(at 163.83 124.46 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1140,7 +1140,7 @@
 		(uuid "097c6c67-c0ae-454a-9e9f-d7ab3274e950")
 	)
 	(label "+5V_MAIN"
-		(at 116.84 114.3 180)
+		(at 124.46 134.62 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1150,7 +1150,7 @@
 		(uuid "0dfd5973-b454-495b-bdec-6576575d8d07")
 	)
 	(label "GND"
-		(at 45.72 104.14 270)
+		(at 46.99 161.29 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1180,7 +1180,7 @@
 		(uuid "2cda6249-cf4b-4460-afe6-b6cf763aed47")
 	)
 	(label "+5V_MAIN"
-		(at 116.84 93.98 180)
+		(at 124.46 114.3 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1200,7 +1200,7 @@
 		(uuid "3e0ec8c4-c2e2-4c41-9272-551244e08cdb")
 	)
 	(label "+5V_R7"
-		(at 105.41 121.92 270)
+		(at 113.03 142.24 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1220,7 +1220,7 @@
 		(uuid "45085c92-ef32-4c0b-9938-75ae590ceda7")
 	)
 	(label "GND"
-		(at 31.75 78.74 180)
+		(at 27.94 138.43 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1230,7 +1230,7 @@
 		(uuid "468b62d8-0b24-4180-a0e7-b8a93c41e6c3")
 	)
 	(label "+5V_IN"
-		(at 31.75 73.66 180)
+		(at 27.94 133.35 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1240,7 +1240,7 @@
 		(uuid "4c9f1c31-4adf-4558-9158-ca8133e09e9b")
 	)
 	(label "+5V_R3"
-		(at 105.41 101.6 270)
+		(at 113.03 121.92 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1270,7 +1270,7 @@
 		(uuid "5235b3f0-c0e1-4494-8868-92c2d7716a4f")
 	)
 	(label "+5V_R2"
-		(at 93.98 101.6 270)
+		(at 101.6 121.92 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1290,7 +1290,7 @@
 		(uuid "5ff3638b-713b-4768-8824-c3fc7fe86bdf")
 	)
 	(label "+5V_MAIN"
-		(at 105.41 93.98 180)
+		(at 113.03 114.3 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1320,7 +1320,7 @@
 		(uuid "74640ed3-69e1-400d-a9b2-b54942c41cd9")
 	)
 	(label "+5V_R8"
-		(at 116.84 121.92 270)
+		(at 124.46 142.24 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1330,7 +1330,7 @@
 		(uuid "7e4bc2d9-5cc3-45df-9cb0-e19cb6ace99f")
 	)
 	(label "+5V_MAIN"
-		(at 93.98 93.98 180)
+		(at 101.6 114.3 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1340,7 +1340,7 @@
 		(uuid "828579fb-28ff-4b15-aa6e-802d29cf4978")
 	)
 	(label "+5V_R9"
-		(at 129.54 111.76 270)
+		(at 137.16 132.08 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1390,7 +1390,7 @@
 		(uuid "910a7834-20b5-4a8e-abbe-62b5dc1306d6")
 	)
 	(label "+5V_MAIN"
-		(at 82.55 114.3 180)
+		(at 90.17 134.62 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1400,7 +1400,7 @@
 		(uuid "92aba2e5-2d3f-4d88-8493-f49938a50f53")
 	)
 	(label "+5V_MAIN"
-		(at 105.41 114.3 180)
+		(at 113.03 134.62 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1410,7 +1410,7 @@
 		(uuid "976d7fef-9c78-4e4d-9d7c-df96d9b64d2f")
 	)
 	(label "+5V_IN"
-		(at 73.66 72.39 180)
+		(at 69.85 132.08 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1430,7 +1430,7 @@
 		(uuid "9ded953a-c553-4336-8702-fdaf64e333a9")
 	)
 	(label "+5V_MAIN"
-		(at 167.64 104.14 180)
+		(at 175.26 124.46 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1440,7 +1440,7 @@
 		(uuid "a9e298e4-1500-48ce-bc28-269896270b94")
 	)
 	(label "+5V_R1"
-		(at 82.55 101.6 270)
+		(at 90.17 121.92 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1450,7 +1450,7 @@
 		(uuid "aa200ef6-c6b4-40da-9ebe-c7f7a1f2303b")
 	)
 	(label "+5V_CORNER"
-		(at 156.21 111.76 270)
+		(at 163.83 132.08 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1490,7 +1490,7 @@
 		(uuid "b9b36338-753b-40b2-863d-31d6f439575f")
 	)
 	(label "+5V_MAIN"
-		(at 140.97 104.14 180)
+		(at 148.59 124.46 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1510,7 +1510,7 @@
 		(uuid "bcdfa977-27ae-4c3d-bbf9-118dc9710e12")
 	)
 	(label "+5V_MAIN"
-		(at 93.98 114.3 180)
+		(at 101.6 134.62 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1520,7 +1520,7 @@
 		(uuid "bf89ad3a-9ea7-45d7-acdf-a58c831a3752")
 	)
 	(label "+5V_CTRL"
-		(at 167.64 111.76 270)
+		(at 175.26 132.08 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1530,7 +1530,7 @@
 		(uuid "c1ef3d52-df92-4357-acb5-e7f38f050306")
 	)
 	(label "+5V_MAIN"
-		(at 129.54 104.14 180)
+		(at 137.16 124.46 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1540,7 +1540,7 @@
 		(uuid "c88b29dd-ec33-4385-99db-e4ed683aadf7")
 	)
 	(label "+5V_R5"
-		(at 82.55 121.92 270)
+		(at 90.17 142.24 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1550,7 +1550,7 @@
 		(uuid "d0b17d85-b6a4-4b85-a325-57f4f07145d5")
 	)
 	(label "+5V_MAIN"
-		(at 43.18 92.71 0)
+		(at 44.45 149.86 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1560,7 +1560,7 @@
 		(uuid "d22a20e1-e0c1-4edc-b836-27c2c63abae9")
 	)
 	(label "+5V_MAIN"
-		(at 82.55 93.98 180)
+		(at 90.17 114.3 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1570,7 +1570,7 @@
 		(uuid "d4ffc401-1ed1-4887-a7cd-e349cb7a8293")
 	)
 	(label "+5V_MAIN"
-		(at 73.66 81.28 180)
+		(at 69.85 140.97 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1600,7 +1600,7 @@
 		(uuid "e4242b44-cb08-4818-b937-b5d776f2a0ba")
 	)
 	(label "+5V_R4"
-		(at 116.84 101.6 270)
+		(at 124.46 121.92 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1630,7 +1630,7 @@
 		(uuid "f65a80b2-105f-407c-8416-41782fb728f3")
 	)
 	(label "+5V_R6"
-		(at 93.98 121.92 270)
+		(at 101.6 142.24 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1640,7 +1640,7 @@
 		(uuid "f66b60ed-4157-47f2-9672-9fc9f9444d8e")
 	)
 	(label "+5V_R10"
-		(at 140.97 111.76 270)
+		(at 148.59 132.08 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1897,7 +1897,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse")
-		(at 93.98 97.79 0)
+		(at 101.6 118.11 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1908,7 +1908,7 @@
 		(fields_autoplaced yes)
 		(uuid "326af6c2-2166-4235-a42f-274efa34f1d2")
 		(property "Reference" "F3"
-			(at 96.52 96.5199 0)
+			(at 104.14 116.8399 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1919,7 +1919,7 @@
 			)
 		)
 		(property "Value" "2A"
-			(at 96.52 99.0599 0)
+			(at 104.14 119.3799 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1930,7 +1930,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuseholder_Blade_Mini_Keystone_3568"
-			(at 92.202 97.79 90)
+			(at 99.822 118.11 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1941,7 +1941,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 93.98 97.79 0)
+			(at 101.6 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1952,7 +1952,7 @@
 			)
 		)
 		(property "Description" "Fuse"
-			(at 93.98 97.79 0)
+			(at 101.6 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2061,7 +2061,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x04")
-		(at 48.26 74.93 0)
+		(at 44.45 134.62 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2072,7 +2072,7 @@
 		(fields_autoplaced yes)
 		(uuid "3e89d8cc-1539-426e-9074-d24cca4cb135")
 		(property "Reference" "J1"
-			(at 50.8 74.9299 0)
+			(at 46.99 134.6199 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2083,7 +2083,7 @@
 			)
 		)
 		(property "Value" "PSU_IN"
-			(at 50.8 77.4699 0)
+			(at 46.99 137.1599 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2094,7 +2094,7 @@
 			)
 		)
 		(property "Footprint" "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x04_P3.50mm_Horizontal"
-			(at 48.26 74.93 0)
+			(at 44.45 134.62 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2105,7 +2105,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 48.26 74.93 0)
+			(at 44.45 134.62 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2116,7 +2116,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 48.26 74.93 0)
+			(at 44.45 134.62 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2149,7 +2149,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse")
-		(at 129.54 107.95 0)
+		(at 137.16 128.27 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2160,7 +2160,7 @@
 		(fields_autoplaced yes)
 		(uuid "4b862ed4-d864-4b97-8467-34182705fb30")
 		(property "Reference" "F10"
-			(at 132.08 106.6799 0)
+			(at 139.7 126.9999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2171,7 +2171,7 @@
 			)
 		)
 		(property "Value" "2A"
-			(at 132.08 109.2199 0)
+			(at 139.7 129.5399 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2182,7 +2182,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuseholder_Blade_Mini_Keystone_3568"
-			(at 127.762 107.95 90)
+			(at 135.382 128.27 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2193,7 +2193,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 129.54 107.95 0)
+			(at 137.16 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2204,7 +2204,7 @@
 			)
 		)
 		(property "Description" "Fuse"
-			(at 129.54 107.95 0)
+			(at 137.16 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2231,7 +2231,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse")
-		(at 82.55 118.11 0)
+		(at 90.17 138.43 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2242,7 +2242,7 @@
 		(fields_autoplaced yes)
 		(uuid "5b6d6a43-850b-447e-9274-0958ef9ad281")
 		(property "Reference" "F6"
-			(at 85.09 116.8399 0)
+			(at 92.71 137.1599 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2253,7 +2253,7 @@
 			)
 		)
 		(property "Value" "2A"
-			(at 85.09 119.3799 0)
+			(at 92.71 139.6999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2264,7 +2264,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuseholder_Blade_Mini_Keystone_3568"
-			(at 80.772 118.11 90)
+			(at 88.392 138.43 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2275,7 +2275,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 82.55 118.11 0)
+			(at 90.17 138.43 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2286,7 +2286,7 @@
 			)
 		)
 		(property "Description" "Fuse"
-			(at 82.55 118.11 0)
+			(at 90.17 138.43 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2313,7 +2313,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 36.83 73.66 0)
+		(at 33.02 133.35 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2324,7 +2324,7 @@
 		(fields_autoplaced yes)
 		(uuid "5daac0ca-4238-4f05-b23b-f415672fef05")
 		(property "Reference" "#FLG01"
-			(at 36.83 71.755 0)
+			(at 33.02 131.445 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2335,7 +2335,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 36.83 68.58 0)
+			(at 33.02 128.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2345,7 +2345,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 36.83 73.66 0)
+			(at 33.02 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2356,7 +2356,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 36.83 73.66 0)
+			(at 33.02 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2367,7 +2367,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 36.83 73.66 0)
+			(at 33.02 133.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2391,7 +2391,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse")
-		(at 73.66 76.2 0)
+		(at 69.85 135.89 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2402,7 +2402,7 @@
 		(fields_autoplaced yes)
 		(uuid "6399eaf7-1e65-49f6-98a2-8bb4235477a2")
 		(property "Reference" "F1"
-			(at 76.2 74.9299 0)
+			(at 72.39 134.6199 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2413,7 +2413,7 @@
 			)
 		)
 		(property "Value" "15A"
-			(at 76.2 77.4699 0)
+			(at 72.39 137.1599 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2424,7 +2424,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuseholder_Blade_Mini_Keystone_3568"
-			(at 71.882 76.2 90)
+			(at 68.072 135.89 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2435,7 +2435,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 73.66 76.2 0)
+			(at 69.85 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2446,7 +2446,7 @@
 			)
 		)
 		(property "Description" "Fuse"
-			(at 73.66 76.2 0)
+			(at 69.85 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2473,7 +2473,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse")
-		(at 105.41 118.11 0)
+		(at 113.03 138.43 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2484,7 +2484,7 @@
 		(fields_autoplaced yes)
 		(uuid "7306600e-d549-402a-a36a-dbde2b55b378")
 		(property "Reference" "F8"
-			(at 107.95 116.8399 0)
+			(at 115.57 137.1599 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2495,7 +2495,7 @@
 			)
 		)
 		(property "Value" "2A"
-			(at 107.95 119.3799 0)
+			(at 115.57 139.6999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2506,7 +2506,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuseholder_Blade_Mini_Keystone_3568"
-			(at 103.632 118.11 90)
+			(at 111.252 138.43 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2517,7 +2517,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 105.41 118.11 0)
+			(at 113.03 138.43 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2528,7 +2528,7 @@
 			)
 		)
 		(property "Description" "Fuse"
-			(at 105.41 118.11 0)
+			(at 113.03 138.43 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2637,7 +2637,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse")
-		(at 140.97 107.95 0)
+		(at 148.59 128.27 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2648,7 +2648,7 @@
 		(fields_autoplaced yes)
 		(uuid "7fc3d88f-3091-445e-b6bc-4d9f0b551def")
 		(property "Reference" "F11"
-			(at 143.51 106.6799 0)
+			(at 151.13 126.9999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2659,7 +2659,7 @@
 			)
 		)
 		(property "Value" "2A"
-			(at 143.51 109.2199 0)
+			(at 151.13 129.5399 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2670,7 +2670,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuseholder_Blade_Mini_Keystone_3568"
-			(at 139.192 107.95 90)
+			(at 146.812 128.27 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2681,7 +2681,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 140.97 107.95 0)
+			(at 148.59 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2692,7 +2692,7 @@
 			)
 		)
 		(property "Description" "Fuse"
-			(at 140.97 107.95 0)
+			(at 148.59 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2719,7 +2719,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse")
-		(at 93.98 118.11 0)
+		(at 101.6 138.43 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2730,7 +2730,7 @@
 		(fields_autoplaced yes)
 		(uuid "845c7698-4777-40c5-b03e-5f0887bd0a73")
 		(property "Reference" "F7"
-			(at 96.52 116.8399 0)
+			(at 104.14 137.1599 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2741,7 +2741,7 @@
 			)
 		)
 		(property "Value" "2A"
-			(at 96.52 119.3799 0)
+			(at 104.14 139.6999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2752,7 +2752,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuseholder_Blade_Mini_Keystone_3568"
-			(at 92.202 118.11 90)
+			(at 99.822 138.43 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2763,7 +2763,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 93.98 118.11 0)
+			(at 101.6 138.43 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2774,7 +2774,7 @@
 			)
 		)
 		(property "Description" "Fuse"
-			(at 93.98 118.11 0)
+			(at 101.6 138.43 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2801,7 +2801,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse")
-		(at 116.84 97.79 0)
+		(at 124.46 118.11 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2812,7 +2812,7 @@
 		(fields_autoplaced yes)
 		(uuid "8975643d-7814-48a2-bac6-3c857935b3eb")
 		(property "Reference" "F5"
-			(at 119.38 96.5199 0)
+			(at 127 116.8399 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2823,7 +2823,7 @@
 			)
 		)
 		(property "Value" "2A"
-			(at 119.38 99.0599 0)
+			(at 127 119.3799 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2834,7 +2834,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuseholder_Blade_Mini_Keystone_3568"
-			(at 115.062 97.79 90)
+			(at 122.682 118.11 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2845,7 +2845,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.84 97.79 0)
+			(at 124.46 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2856,7 +2856,7 @@
 			)
 		)
 		(property "Description" "Fuse"
-			(at 116.84 97.79 0)
+			(at 124.46 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3111,7 +3111,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 36.83 78.74 180)
+		(at 33.02 138.43 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3122,7 +3122,7 @@
 		(fields_autoplaced yes)
 		(uuid "8c7e9ae9-7309-457d-8b5f-7f1f84619687")
 		(property "Reference" "#FLG02"
-			(at 36.83 80.645 0)
+			(at 33.02 140.335 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3133,7 +3133,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 36.83 83.82 0)
+			(at 33.02 143.51 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3143,7 +3143,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 36.83 78.74 0)
+			(at 33.02 138.43 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3154,7 +3154,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 36.83 78.74 0)
+			(at 33.02 138.43 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3165,7 +3165,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 36.83 78.74 0)
+			(at 33.02 138.43 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3271,7 +3271,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse")
-		(at 167.64 107.95 0)
+		(at 175.26 128.27 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3282,7 +3282,7 @@
 		(fields_autoplaced yes)
 		(uuid "9349c102-6164-4a31-8c87-ef366c95260b")
 		(property "Reference" "F13"
-			(at 170.18 106.6799 0)
+			(at 177.8 126.9999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3293,7 +3293,7 @@
 			)
 		)
 		(property "Value" "1A"
-			(at 170.18 109.2199 0)
+			(at 177.8 129.5399 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3304,7 +3304,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuseholder_Blade_Mini_Keystone_3568"
-			(at 165.862 107.95 90)
+			(at 173.482 128.27 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3315,7 +3315,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 167.64 107.95 0)
+			(at 175.26 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3326,7 +3326,7 @@
 			)
 		)
 		(property "Description" "Fuse"
-			(at 167.64 107.95 0)
+			(at 175.26 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3517,7 +3517,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Polarized")
-		(at 38.1 97.79 0)
+		(at 39.37 154.94 0)
 		(mirror y)
 		(unit 1)
 		(body_style 1)
@@ -3528,7 +3528,7 @@
 		(dnp no)
 		(uuid "a9a6ab6d-5895-4252-b456-205ddd520cc0")
 		(property "Reference" "C1"
-			(at 34.29 95.6309 0)
+			(at 35.56 152.7809 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3539,7 +3539,7 @@
 			)
 		)
 		(property "Value" "470uF"
-			(at 34.29 98.1709 0)
+			(at 35.56 155.3209 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3550,7 +3550,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:CP_Elec_8x10.5"
-			(at 37.1348 101.6 0)
+			(at 38.4048 158.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3561,7 +3561,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 38.1 97.79 0)
+			(at 39.37 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3572,7 +3572,7 @@
 			)
 		)
 		(property "Description" "Polarized capacitor"
-			(at 38.1 97.79 0)
+			(at 39.37 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3599,7 +3599,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse")
-		(at 105.41 97.79 0)
+		(at 113.03 118.11 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3610,7 +3610,7 @@
 		(fields_autoplaced yes)
 		(uuid "b4166e8d-b5ee-418c-ac21-2709d2d82713")
 		(property "Reference" "F4"
-			(at 107.95 96.5199 0)
+			(at 115.57 116.8399 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3621,7 +3621,7 @@
 			)
 		)
 		(property "Value" "2A"
-			(at 107.95 99.0599 0)
+			(at 115.57 119.3799 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3632,7 +3632,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuseholder_Blade_Mini_Keystone_3568"
-			(at 103.632 97.79 90)
+			(at 111.252 118.11 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3643,7 +3643,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 105.41 97.79 0)
+			(at 113.03 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3654,7 +3654,7 @@
 			)
 		)
 		(property "Description" "Fuse"
-			(at 105.41 97.79 0)
+			(at 113.03 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3829,10 +3829,10 @@
 			)
 		)
 		(pin "2"
-			(uuid "fb50f1b1-1666-4541-91e1-52723d2587e0")
+			(uuid "fb50f1b1-1666-4541-91e1-52723d2587e1")
 		)
 		(pin "1"
-			(uuid "ce8fead9-fa0a-4e92-b632-57bb83711892")
+			(uuid "ce8fead9-fa0a-4e92-b632-57bb83711893")
 		)
 		(instances
 			(project "powerRailPCB"
@@ -3845,7 +3845,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Polarized")
-		(at 52.07 97.79 0)
+		(at 53.34 154.94 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3856,7 +3856,7 @@
 		(fields_autoplaced yes)
 		(uuid "c787cf26-8b46-49be-a331-8d162b1a4a1b")
 		(property "Reference" "C2"
-			(at 55.88 95.6309 0)
+			(at 57.15 152.7809 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3867,7 +3867,7 @@
 			)
 		)
 		(property "Value" "470uF"
-			(at 55.88 98.1709 0)
+			(at 57.15 155.3209 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3878,7 +3878,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:CP_Elec_8x10.5"
-			(at 53.0352 101.6 0)
+			(at 54.3052 158.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3889,7 +3889,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 52.07 97.79 0)
+			(at 53.34 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3900,7 +3900,7 @@
 			)
 		)
 		(property "Description" "Polarized capacitor"
-			(at 52.07 97.79 0)
+			(at 53.34 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3927,7 +3927,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse")
-		(at 116.84 118.11 0)
+		(at 124.46 138.43 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3938,7 +3938,7 @@
 		(fields_autoplaced yes)
 		(uuid "d98d5cd4-efa3-4e1b-a910-d849b1fb2ece")
 		(property "Reference" "F9"
-			(at 119.38 116.8399 0)
+			(at 127 137.1599 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3949,7 +3949,7 @@
 			)
 		)
 		(property "Value" "2A"
-			(at 119.38 119.3799 0)
+			(at 127 139.6999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3960,7 +3960,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuseholder_Blade_Mini_Keystone_3568"
-			(at 115.062 118.11 90)
+			(at 122.682 138.43 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3971,7 +3971,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.84 118.11 0)
+			(at 124.46 138.43 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3982,7 +3982,7 @@
 			)
 		)
 		(property "Description" "Fuse"
-			(at 116.84 118.11 0)
+			(at 124.46 138.43 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4091,7 +4091,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse")
-		(at 156.21 107.95 0)
+		(at 163.83 128.27 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4102,7 +4102,7 @@
 		(fields_autoplaced yes)
 		(uuid "e41f6ecb-f26d-4f8b-ba5a-9cf3170c8fa0")
 		(property "Reference" "F12"
-			(at 158.75 106.6799 0)
+			(at 166.37 126.9999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4113,7 +4113,7 @@
 			)
 		)
 		(property "Value" "1A"
-			(at 158.75 109.2199 0)
+			(at 166.37 129.5399 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4124,7 +4124,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuseholder_Blade_Mini_Keystone_3568"
-			(at 154.432 107.95 90)
+			(at 162.052 128.27 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4135,7 +4135,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 156.21 107.95 0)
+			(at 163.83 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4146,7 +4146,7 @@
 			)
 		)
 		(property "Description" "Fuse"
-			(at 156.21 107.95 0)
+			(at 163.83 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4173,7 +4173,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse")
-		(at 82.55 97.79 0)
+		(at 90.17 118.11 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4184,7 +4184,7 @@
 		(fields_autoplaced yes)
 		(uuid "e533718c-a523-49c6-8172-22f6ec4c3d0c")
 		(property "Reference" "F2"
-			(at 85.09 96.5199 0)
+			(at 92.71 116.8399 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4195,7 +4195,7 @@
 			)
 		)
 		(property "Value" "2A"
-			(at 85.09 99.0599 0)
+			(at 92.71 119.3799 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4206,7 +4206,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuseholder_Blade_Mini_Keystone_3568"
-			(at 80.772 97.79 90)
+			(at 88.392 118.11 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4217,7 +4217,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 82.55 97.79 0)
+			(at 90.17 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4228,7 +4228,7 @@
 			)
 		)
 		(property "Description" "Fuse"
-			(at 82.55 97.79 0)
+			(at 90.17 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

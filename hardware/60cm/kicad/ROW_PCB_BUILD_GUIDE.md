@@ -166,7 +166,7 @@ If `J1` touches `H1`/`H3` or `L01`/`L02`, check that the old 5.00 mm footprint i
 
 ### LEDs and 100 nF capacitors
 
-`Lxx` = WS2812B. `Cxx` = its 100 nF capacitor. All rotations are 0°. Cap centre X = LED X **+ 5.6 mm**. The earlier +4.8 mm value made the 0805 courtyard overlap the LED courtyard by 0.35 mm; +5.6 mm leaves ~0.45 mm between courtyards.
+`Lxx` = WS2812B. `Cxx` = its 100 nF capacitor. All rotations are 0°. For the LEDs and 0805 capacitors, KiCad's footprint origin is the **body centre**, so the X/Y below is the body centre measured from the board top-left corner — not from the PCB centre and not from a pad. Only `J1`/`J2` use pad 1 as their origin. Cap centre X = LED X **+ 5.6 mm**. The earlier +4.8 mm value made the 0805 courtyard overlap the LED courtyard by 0.35 mm; +5.6 mm leaves ~0.45 mm between courtyards.
 
 | Ref pair | Column | LED X | LED Y | Cap X | Cap Y |
 |---|---:|---:|---:|---:|---:|

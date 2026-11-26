@@ -11,15 +11,6 @@
     (clearance 150.0 (type POWER,Default))
     (clearance 250.0 (type "board_edge"))
   )
-  (padstack "Via[0-1]_600:300_um"
-    (shape
-      (circle F.Cu 600.0 0.0 0.0)
-    )
-    (shape
-      (circle B.Cu 600.0 0.0 0.0)
-    )
-    (attach off)
-  )
   (padstack "Via[0-1]_700:400_um"
     (shape
       (circle F.Cu 700.0 0.0 0.0)
@@ -29,38 +20,17 @@
     )
     (attach off)
   )
-  (padstack "Via[0-1]_600:400_um"
-    (shape
-      (circle F.Cu 600.0 0.0 0.0)
-    )
-    (shape
-      (circle B.Cu 600.0 0.0 0.0)
-    )
-    (attach off)
-  )
-  (via 
-    "Via[0-1]_600:300_um" "Via[0-1]_600:300_um" default
-  )
   (via 
     "Via[0-1]_700:400_um" "Via[0-1]_700:400_um" default
   )
   (via 
-    "Via[0-1]_600:400_um" "Via[0-1]_600:400_um" default
-  )
-  (via 
-    "Via[0-1]_600:300_um-POWER,Default" "Via[0-1]_600:300_um" POWER,Default
-  )
-  (via 
     "Via[0-1]_700:400_um-POWER,Default" "Via[0-1]_700:400_um" POWER,Default
   )
-  (via 
-    "Via[0-1]_600:400_um-POWER,Default" "Via[0-1]_600:400_um" POWER,Default
+  (viaRule
+    default "Via[0-1]_700:400_um"
   )
   (viaRule
-    default "Via[0-1]_600:300_um"
-  )
-  (viaRule
-    default "Via[0-1]_600:300_um"
+    default "Via[0-1]_700:400_um"
   )
   (viaRule
     POWER,Default "Via[0-1]_700:400_um-POWER,Default"
@@ -83,7 +53,7 @@
     (clearance_class POWER,Default)
     (via_rule POWER,Default)
     (rule
-      (width 1200.0)
+      (width 1500.0)
     )
     (circuit 
       (use_layer F.Cu B.Cu)

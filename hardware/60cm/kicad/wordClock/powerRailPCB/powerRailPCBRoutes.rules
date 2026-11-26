@@ -4,9 +4,9 @@
     fortyfive_degree
   )
   (rule
-    (width 250.0)
+    (width 500.0)
     (clearance 150.0)
-    (clearance 125.0 (type smd_to_turn_gap))
+    (clearance 250.0 (type smd_to_turn_gap))
     (clearance 37.6 (type smd))
     (clearance 150.0 (type "PWR_1P5,Default"))
     (clearance 150.0 (type POWER,Default))
@@ -54,7 +54,7 @@
     (clearance_class default)
     (via_rule default)
     (rule
-      (width 250.0)
+      (width 500.0)
     )
     (circuit 
       (use_layer F.Cu B.Cu)
@@ -65,7 +65,7 @@
     (clearance_class "PWR_1P5,Default")
     (via_rule "PWR_1P5,Default")
     (rule
-      (width 1500.0)
+      (width 2000.0)
     )
     (circuit 
       (use_layer F.Cu B.Cu)
@@ -76,19 +76,19 @@
     (clearance_class POWER,Default)
     (via_rule POWER,Default)
     (rule
-      (width 3000.0)
+      (width 4000.0)
     )
     (circuit 
       (use_layer F.Cu B.Cu)
     )
   )
   (class "PWR_2MM,Default"
-    "/+5V_MAIN" "/+5V_R1" "/+5V_R2" "/+5V_R3" "/+5V_R4" "/+5V_R5" "/+5V_R6" "/+5V_R7"
-    "/+5V_R8" "/+5V_R9" "/+5V_R10"
+    "/+5V_MAIN" "/+5V_R2" "/+5V_R3" "/+5V_R4" "/+5V_R10" "/+5V_R7" "/+5V_R6" "/+5V_R8"
+    "/+5V_R1" "/+5V_R9" "/+5V_R5"
     (clearance_class "PWR_2MM,Default")
     (via_rule "PWR_2MM,Default")
     (rule
-      (width 2000.0)
+      (width 4000.0)
     )
     (circuit 
       (use_layer F.Cu B.Cu)
